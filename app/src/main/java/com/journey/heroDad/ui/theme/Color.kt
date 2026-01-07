@@ -2,10 +2,17 @@ package com.journey.heroDad.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val ColorPrimaryDark = Color(0xFF2B8CED)
+val ColorSecondaryDark = Color(0xFF99C4EE)
+val ColorTertiaryDark = Color(0xFF1D2730)
+val BackgroundPrimaryDark = Color(0xFF0F1821)
+val SurfacePrimaryDark = Color(0xFF101923)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val ColorPrimaryLight = Color(0xFF2B8CED)
+val ColorSecondaryLight = Color(0xFF1D2730)
+val ColorTertiaryLight = Color(0xFF99C4EE)
+val BackgroundPrimaryLight = Color(0xFFFFFBFE)
+val SurfacePrimaryLight = Color(0xFFFFFBFE)
+val OnSurfaceLight = Color(0xFF1D2730)
+val OnTertiaryLight = Color(0xFFFFFBFE)
+val OnBackgroundLight = Color(0xFFFFFBFE)

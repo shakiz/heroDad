@@ -52,7 +52,7 @@ android {
             dimension = "environment"
             applicationIdSuffix = ".staging"
             applicationId = "com.journey.herodad.qa"
-            resValue("string", "app_name", "MyApp (QA)")
+            resValue("string", "app_name", "Hero Dad (QA)")
             buildConfigField("String", "API_BASE_URL", "\"https://dummyjson.com/\"")
         }
 
@@ -60,14 +60,14 @@ android {
             dimension = "environment"
             applicationIdSuffix = ".preprod"
             applicationId = "com.journey.herodad.uat"
-            resValue("string", "app_name", "MyApp (UAT)")
+            resValue("string", "app_name", "Hero Dad (UAT)")
             buildConfigField("String", "API_BASE_URL", "\"https://dummyjson.com/\"")
         }
 
         create("prod") {
             dimension = "environment"
             applicationId = "com.journey.herodad"
-            resValue("string", "app_name", "MyApp")
+            resValue("string", "app_name", "Hero Dad")
             buildConfigField("String", "API_BASE_URL", "\"https://dummyjson.com/\"")
         }
     }

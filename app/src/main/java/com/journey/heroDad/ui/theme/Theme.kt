@@ -16,22 +16,28 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = ColorPrimaryDark,
+    secondary = ColorSecondaryDark,
+    tertiary = ColorTertiaryDark,
+    background = BackgroundPrimaryDark,
+    surface = SurfacePrimaryDark,
+    onPrimary = Color.White,
+    onSecondary = SurfacePrimaryDark,
+    onBackground = Color.White,
+    onSurface = Color.White
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40,
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
+    primary = ColorPrimaryLight,
+    secondary = ColorSecondaryLight,
+    tertiary = ColorTertiaryLight,
+    background = BackgroundPrimaryLight,
+    surface = SurfacePrimaryLight,
     onPrimary = Color.White,
     onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0x4899979C),
-    onSurface = Color(0xFF1C1B1F),
+    onTertiary = OnTertiaryLight,
+    onBackground = OnBackgroundLight,
+    onSurface = OnSurfaceLight,
 )
 
 private val AppShapes = Shapes(
@@ -46,7 +52,7 @@ private val AppShapes = Shapes(
 fun HeroDadAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
