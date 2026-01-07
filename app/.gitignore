@@ -1,1 +1,32 @@
-/build
+# --- Build Artifacts ---
+bin/
+gen/
+out/
+.gradle/
+build/
+
+# --- Android Studio / IntelliJ ---
+.idea/
+*.iml
+*.iws
+.project
+.settings/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# --- Kotlin & Compose ---
+# Keep this to ignore Compose Compiler reports if you enable them
+**/build/compose_compiler/
+
+# --- OS & System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Secrets & Environment ---
+# Always ignore files where you store API keys
+secrets.xml
+*.jks
+*.keystore
+google-services.json
