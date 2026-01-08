@@ -1,6 +1,6 @@
 package com.journey.heroDad.di
 
-import com.journey.heroDad.ui.features.dashboard.viewmodel.DashboardViewModel
+import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
