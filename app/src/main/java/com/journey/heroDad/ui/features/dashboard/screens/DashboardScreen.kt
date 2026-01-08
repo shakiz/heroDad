@@ -38,15 +38,15 @@ fun DashboardScreen(
     dashboardViewModel: DashboardViewModel = koinViewModel(),
     navController: NavController
 ) {
-    val recipesResult by dashboardViewModel.recipe.collectAsState()
+    val kicks by dashboardViewModel.kicks.collectAsState()
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
     // Fetch recipes if empty (only when the screen is first created)
     LaunchedEffect(Lifecycle.State.CREATED) {
-        if (recipesResult is ResultWrapper.Loading || recipesResult is ResultWrapper.Failure) {
-            dashboardViewModel.getRecipes()
+        if (kicks is ResultWrapper.Loading || kicks is ResultWrapper.Failure) {
+            dashboardViewModel.getKicks()
         }
     }
 
@@ -54,7 +54,7 @@ fun DashboardScreen(
         containerColor = MaterialTheme.colorScheme.background,
     ) { innerPadding ->
         Column(Modifier.padding(innerPadding)) {
-            when (val result = recipesResult) {
+            when (val result = kicks) {
                 is ResultWrapper.Loading -> {
                     Box(
                         modifier = Modifier.fillMaxSize(),
@@ -96,6 +96,8 @@ fun DashboardScreen(
                                 isKickCount = false
                             )
                         }
+                        StartKickCountCard()
+                        KickList(result.data)
                     }
                 }
 
