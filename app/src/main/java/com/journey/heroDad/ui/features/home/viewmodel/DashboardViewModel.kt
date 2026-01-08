@@ -1,4 +1,4 @@
-package com.journey.heroDad.ui.features.dashboard.viewmodel
+package com.journey.heroDad.ui.features.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,4 +1,4 @@
-package com.journey.heroDad.ui.features.dashboard.screens
+package com.journey.heroDad.ui.features.home.widget
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

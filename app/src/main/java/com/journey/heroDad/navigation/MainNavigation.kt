@@ -5,7 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.journey.heroDad.domain.model.recipes.Recipe
-import com.journey.heroDad.ui.features.dashboard.screens.DashboardScreen
+import com.journey.heroDad.ui.features.home.screens.DashboardScreen
 import com.journey.heroDad.ui.features.settings.screens.SettingsScreen
 import com.journey.heroDad.utils.ScaleTransitionDirection
 import com.journey.heroDad.utils.scaleIntoContainer

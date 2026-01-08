@@ -1,4 +1,4 @@
-package com.journey.heroDad.ui.features.dashboard.screens
+package com.journey.heroDad.ui.features.home.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,7 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.ui.features.dashboard.viewmodel.DashboardViewModel
+import com.journey.heroDad.ui.features.home.widget.KickList
+import com.journey.heroDad.ui.features.home.widget.StartKickCountCard
+import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.HeroDadAppBar
 import com.journey.heroDad.utils.components.widget.StatCard
