@@ -8,17 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,24 +23,21 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import com.journey.heroDad.ui.features.home.widget.KickList
 import com.journey.heroDad.ui.features.home.widget.StartKickCountCard
-import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.HeroDadAppBar
-import com.journey.heroDad.utils.components.widget.StatCard
+import com.journey.heroDad.ui.features.home.widget.StatCard
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DashboardScreen(
+fun HomeScreen(
     dashboardViewModel: DashboardViewModel = koinViewModel(),
     navController: NavController
 ) {
     val kicks by dashboardViewModel.kicks.collectAsState()
-
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
 
     // Fetch recipes if empty (only when the screen is first created)
     LaunchedEffect(Lifecycle.State.CREATED) {
