@@ -36,7 +36,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DashboardScreen(
+fun HomeScreen(
     dashboardViewModel: DashboardViewModel = koinViewModel(),
     navController: NavController
 ) {
