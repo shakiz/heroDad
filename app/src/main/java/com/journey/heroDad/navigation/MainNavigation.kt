@@ -14,9 +14,6 @@ import com.journey.heroDad.ui.features.home.screens.HomeScreen
 import com.journey.heroDad.ui.features.profile.ProfileScreen
 import com.journey.heroDad.ui.features.quiz.QuizScreen
 import com.journey.heroDad.ui.features.timeline.TimelineScreen
-import com.journey.heroDad.utils.ScaleTransitionDirection
-import com.journey.heroDad.utils.scaleIntoContainer
-import com.journey.heroDad.utils.scaleOutOfContainer
 
 enum class NavRoute {
     HOME,
@@ -37,59 +34,29 @@ fun MainNavigation() {
     ) { innerPadding ->
         val graph = mainNavController.createGraph(
             startDestination = NavRoute.HOME.name
-        ){
+        ) {
             composable(
                 route = NavRoute.HOME.name,
-                enterTransition = {
-                    scaleIntoContainer()
-                },
-                exitTransition = {
-                    scaleOutOfContainer(direction = ScaleTransitionDirection.INWARDS)
-                },
             ) {
                 HomeScreen(navController = mainNavController)
             }
             composable(
                 route = NavRoute.DASHBOARD.name,
-                enterTransition = {
-                    scaleIntoContainer()
-                },
-                exitTransition = {
-                    scaleOutOfContainer(direction = ScaleTransitionDirection.INWARDS)
-                },
             ) {
                 DashboardScreen()
             }
             composable(
                 route = NavRoute.TIMELINE.name,
-                enterTransition = {
-                    scaleIntoContainer()
-                },
-                exitTransition = {
-                    scaleOutOfContainer(direction = ScaleTransitionDirection.INWARDS)
-                },
             ) {
                 TimelineScreen()
             }
             composable(
                 route = NavRoute.QUIZ.name,
-                enterTransition = {
-                    scaleIntoContainer()
-                },
-                exitTransition = {
-                    scaleOutOfContainer(direction = ScaleTransitionDirection.INWARDS)
-                },
             ) {
                 QuizScreen()
             }
             composable(
                 route = NavRoute.PROFILE.name,
-                enterTransition = {
-                    scaleIntoContainer()
-                },
-                exitTransition = {
-                    scaleOutOfContainer(direction = ScaleTransitionDirection.INWARDS)
-                },
             ) {
                 ProfileScreen()
             }

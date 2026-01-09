@@ -1,4 +1,4 @@
-package com.journey.heroDad.utils.components.widget
+package com.journey.heroDad.ui.features.home.widget
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

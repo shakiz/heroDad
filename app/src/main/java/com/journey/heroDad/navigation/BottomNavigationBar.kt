@@ -1,10 +1,6 @@
 package com.journey.heroDad.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -14,35 +10,39 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.journey.heroDad.R
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     val navigationItems = listOf(
         NavigationItem(
             title = "Home",
-            icon = Icons.Default.Home,
+            icon = R.drawable.ic_home,
             route = NavRoute.HOME.name
         ),
         NavigationItem(
             title = "Dashboard",
-            icon = Icons.Default.DateRange,
+            icon = R.drawable.ic_dashboard,
             route = NavRoute.DASHBOARD.name
         ),
         NavigationItem(
             title = "Timeline",
-            icon = Icons.Default.DateRange,
+            icon = R.drawable.ic_timeline,
             route = NavRoute.TIMELINE.name
         ),
         NavigationItem(
             title = "Quiz",
-            icon = Icons.Default.Info,
+            icon = R.drawable.ic_exam,
             route = NavRoute.QUIZ.name
         ),
         NavigationItem(
             title = "Profile",
-            icon = Icons.Default.Person,
+            icon = R.drawable.ic_profile,
             route = NavRoute.PROFILE.name
         )
 
@@ -63,8 +63,9 @@ fun BottomNavigationBar(navController: NavHostController) {
                 },
                 icon = {
                     Icon(
-                        imageVector = item.icon,
-                        contentDescription = item.title
+                        painter = painterResource(item.icon),
+                        contentDescription = item.title,
+                        modifier = Modifier.size(20.dp)
                     )
                 },
                 label = {
@@ -76,7 +77,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.surface,
+                    selectedIconColor = MaterialTheme.colorScheme.secondary,
                     indicatorColor = MaterialTheme.colorScheme.primary
                 )
             )
