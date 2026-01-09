@@ -60,7 +60,7 @@ fun KickListItem(kick: Kick) {
                         Text(
                             text = kick.noOfKicks.toString(),
                             style = MaterialTheme.typography.titleMedium.copy(
-                                fontWeight = FontWeight.Bold,
+                                fontWeight = FontWeight.W900,
                                 color = MaterialTheme.colorScheme.primary
                             )
                         )
