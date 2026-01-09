@@ -93,7 +93,7 @@ fun HomeScreen(
                             )
                         }
                         StartKickCountCard()
-                        KickList(result.data)
+                        KickList(result.data, isHistoryList = false)
                     }
                 }
 

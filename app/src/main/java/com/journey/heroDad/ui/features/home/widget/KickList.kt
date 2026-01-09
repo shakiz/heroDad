@@ -14,30 +14,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.journey.heroDad.domain.model.kick.Kick
+import com.journey.heroDad.ui.features.dashboard.widget.KickHistoryListItem
 
 @Composable
-fun KickList(kickList: List<Kick>) {
+fun KickList(kickList: List<Kick>, isHistoryList: Boolean) {
     Column(modifier = Modifier.fillMaxSize()) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        ) {
-            Text(
-                text = "Recent Sessions",
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = "View All",
-                style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
-            )
+        if (!isHistoryList) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            ) {
+                Text(
+                    text = "Recent Sessions",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = "View All",
+                    style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
+                )
+            }
         }
 
         LazyColumn {
-            items(kickList.size) { pos ->
-                KickListItem(kickList[pos])
+            if (isHistoryList) {
+                items(kickList.size) { pos ->
+                    KickHistoryListItem(kickList[pos])
+                }
+            } else {
+                items(kickList.size) { pos ->
+                    KickListItem(kickList[pos])
+                }
             }
         }
     }
