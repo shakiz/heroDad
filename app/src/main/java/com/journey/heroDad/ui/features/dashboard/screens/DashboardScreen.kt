@@ -1,11 +1,15 @@
 package com.journey.heroDad.ui.features.dashboard.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -15,98 +19,137 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import com.journey.heroDad.R
 import com.journey.heroDad.ui.features.dashboard.widget.KickTimeStatCard
 import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
-import com.journey.heroDad.ui.features.home.widget.KickList
+import com.journey.heroDad.ui.features.home.widget.KickListItem
 import com.journey.heroDad.utils.components.network.ResultWrapper
+import com.journey.heroDad.utils.components.widget.AppLineChartWidget
 import org.koin.androidx.compose.navigation.koinNavViewModel
 
 @Composable
 fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel()) {
-    val kicks by dashboardViewModel.kicks.collectAsState()
+    val uiState by dashboardViewModel.uiState.collectAsState()
+    val scrollState = rememberScrollState()
+
     LaunchedEffect(Lifecycle.State.CREATED) {
-        if (kicks is ResultWrapper.Loading || kicks is ResultWrapper.Failure) {
-            dashboardViewModel.getKicks()
-        }
+        dashboardViewModel.getKicks()
+        dashboardViewModel.getWeeklyKickData()
     }
 
-    Scaffold() { innerPadding ->
-        when (val result = kicks) {
-            is ResultWrapper.Loading -> {
-
-            }
-
-            is ResultWrapper.Success -> {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
+    Scaffold { innerPadding ->
+        when {
+            uiState.kicks is ResultWrapper.Loading ||
+                    uiState.weeklyKicks is ResultWrapper.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.Start,
-                        modifier = Modifier
-                            .padding(12.dp)
-                            .fillMaxWidth()
-                    ) {
-                        Text(
-                            text = "Trends",
-                            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900)
-                        )
-                        Text(
-                            text = "Your baby's movement insights",
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                    }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 12.dp, vertical = 8.dp)
-                    ) {
-                        KickTimeStatCard(
-                            title = "Avg Duration",
-                            icon = R.drawable.ic_timer,
-                            value = "14m",
-                            modifier = Modifier.weight(1f)
-                        )
-                        KickTimeStatCard(
-                            title = "Daily Avg",
-                            icon = R.drawable.ic_shuffle,
-                            value = "2.4",
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                    ) {
-                        Text(
-                            text = "History",
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Text(
-                            text = "View All",
-                            style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
-                        )
-                    }
-                    KickList(result.data, isHistoryList = true)
+                    CircularProgressIndicator()
                 }
             }
 
-            is ResultWrapper.Failure -> {
+            uiState.kicks is ResultWrapper.Success && uiState.weeklyKicks is ResultWrapper.Success -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // 1. Static Headers as an item
+                    item {
+                        Column(
+                            modifier = Modifier
+                                .padding(12.dp)
+                                .fillMaxWidth()
+                        ) {
+                            Text(
+                                "Trends",
+                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900)
+                            )
+                            Text(
+                                "Your baby's movement insights",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
+                    }
 
+                    // 2. Stats Row as an item
+                    item {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            KickTimeStatCard(
+                                "Avg Duration",
+                                R.drawable.ic_timer,
+                                "14m",
+                                Modifier.weight(1f)
+                            )
+                            KickTimeStatCard(
+                                "Daily Avg",
+                                R.drawable.ic_shuffle,
+                                "2.4",
+                                Modifier.weight(1f)
+                            )
+                        }
+                    }
+
+                    // 3. History Label
+                    item {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text("History", style = MaterialTheme.typography.titleMedium)
+                            Text(
+                                "View All",
+                                style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
+                            )
+                        }
+                    }
+
+                    // 4. IMPORTANT: Do not call KickList() if it contains a LazyColumn.
+                    // Instead, extract its row logic directly here:
+
+                    val kicks = uiState.kicks.getOrNull().orEmpty()
+                    items(kicks.size) { pos ->
+                        // REPLACE THIS with the individual row composable used inside KickList
+                        KickListItem(kicks[pos])
+                    }
+
+                    // 5. Footer Chart as an item
+                    item {
+                        AppLineChartWidget(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            points = uiState.weeklyKicks.getOrNull().orEmpty()
+                        )
+                    }
+                }
+            }
+
+
+            uiState.kicks is ResultWrapper.Failure ||
+                    uiState.weeklyKicks is ResultWrapper.Failure -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Something Went Wrong",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
             }
         }
     }
