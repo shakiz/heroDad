@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -23,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.features.dashboard.widget.KickHistoryListItem
 import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
-import com.journey.heroDad.ui.features.home.widget.KickList
 import com.journey.heroDad.ui.features.home.widget.StartKickCountCard
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.HeroDadAppBar
@@ -61,39 +62,63 @@ fun HomeScreen(
                 }
 
                 is ResultWrapper.Success -> {
-                    Column {
+                    LazyColumn {
                         //AppBar
-                        HeroDadAppBar()
+                        item {
+                            HeroDadAppBar()
+                        }
                         //Kick Count
-                        Row(
+                        item {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp)
+                            ) {
+                                StatCard(
+                                    title = "TODAY'S KICKS",
+                                    value = "12",
+                                    subTitle = "On track",
+                                    icon = R.drawable.ic_feet,
+                                    accentColor = Color(0xFF4CAF50),
+                                    modifier = Modifier.weight(1f),
+                                    isKickCount = true
+                                )
+
+                                StatCard(
+                                    title = "LAST SESSION",
+                                    value = "14 min",
+                                    subTitle = "Yesterday, 8:42 PM",
+                                    icon = R.drawable.ic_timer,
+                                    accentColor = Color(0xFFFFA726),
+                                    modifier = Modifier.weight(1f),
+                                    isKickCount = false
+                                )
+                            }
+                        }
+                        item {
+                            StartKickCountCard()
+                        }
+                        item { Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                         ) {
-                            StatCard(
-                                title = "TODAY'S KICKS",
-                                value = "12",
-                                subTitle = "On track",
-                                icon = R.drawable.ic_feet,
-                                accentColor = Color(0xFF4CAF50),
-                                modifier = Modifier.weight(1f),
-                                isKickCount = true
+                            Text(
+                                text = "Recent Sessions",
+                                style = MaterialTheme.typography.titleMedium
                             )
-
-                            StatCard(
-                                title = "LAST SESSION",
-                                value = "14 min",
-                                subTitle = "Yesterday, 8:42 PM",
-                                icon = R.drawable.ic_timer,
-                                accentColor = Color(0xFFFFA726),
-                                modifier = Modifier.weight(1f),
-                                isKickCount = false
+                            Text(
+                                text = "View All",
+                                style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
                             )
+                        } }
+                        items(result.data.size) { pos ->
+                            KickHistoryListItem(result.data[pos])
                         }
-                        StartKickCountCard()
-                        KickList(result.data)
                     }
                 }
 

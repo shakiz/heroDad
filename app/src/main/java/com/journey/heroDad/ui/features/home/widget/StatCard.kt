@@ -1,5 +1,6 @@
 package com.journey.heroDad.ui.features.home.widget
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,6 +34,7 @@ fun StatCard(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
         color = MaterialTheme.colorScheme.tertiary,
+        border = BorderStroke(1.dp, Color(0xFF223347)),
         tonalElevation = 1.dp
     ) {
         Column(

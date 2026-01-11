@@ -1,4 +1,4 @@
-package com.journey.heroDad.ui.features.home.widget
+package com.journey.heroDad.ui.features.dashboard.widget
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.journey.heroDad.R
@@ -28,7 +27,7 @@ import com.journey.heroDad.domain.model.kick.Kick
 import com.journey.heroDad.utils.Utils
 
 @Composable
-fun KickListItem(kick: Kick) {
+fun KickHistoryListItem(kick: Kick) {
     Surface(
         color = MaterialTheme.colorScheme.tertiary,
         shape = RoundedCornerShape(16.dp),
@@ -57,21 +56,12 @@ fun KickListItem(kick: Kick) {
                             MaterialTheme.colorScheme.surface
                         )
                 ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = kick.noOfKicks.toString(),
-                            style = MaterialTheme.typography.titleMedium.copy(
-                                fontWeight = FontWeight.W900,
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                        )
-                        Text(
-                            text = "Kicks",
-                            style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary)
-                        )
-                    }
+                    Icon(
+                        painter = painterResource(R.drawable.ic_click),
+                        contentDescription = "",
+                        modifier = Modifier.padding(12.dp),
+                        tint = MaterialTheme.colorScheme.secondary
+                    )
                 }
 
                 Column(
@@ -81,40 +71,39 @@ fun KickListItem(kick: Kick) {
                 ) {
                     Text(
                         text = kick.recordDate,
-                        style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onPrimary)
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            fontWeight = FontWeight.W600
+                        )
                     )
                     Text(
-                        text = kick.kickType,
-                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        text = "${Utils().formatMillisToMinutesSeconds(kick.totalDuration)} ● ${kick.kickType}",
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontWeight = FontWeight.W300
+                        )
                     )
                 }
             }
 
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(
-                        MaterialTheme.colorScheme.surface
-                    )
+            Column(
+                modifier = Modifier.padding(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row(
-                    modifier = Modifier.padding(8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_timer),
-                        contentDescription = stringResource(R.string.add_recipe),
-                        tint = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier
-                            .size(28.dp)
-                            .padding(4.dp)
+                Text(
+                    text = kick.noOfKicks.toString(),
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        fontWeight = FontWeight.W900
                     )
-                    Text(
-                        text = Utils().formatMillisToMinutesSeconds(kick.totalDuration),
-                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                )
+                Text(
+                    text = "Kicks".uppercase(),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontWeight = FontWeight.W900
                     )
-                }
+                )
             }
         }
     }

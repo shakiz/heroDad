@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
-import com.journey.heroDad.ui.features.dashboard.DashboardScreen
+import com.journey.heroDad.ui.features.dashboard.screens.DashboardScreen
 import com.journey.heroDad.ui.features.home.screens.HomeScreen
 import com.journey.heroDad.ui.features.profile.ProfileScreen
 import com.journey.heroDad.ui.features.quiz.QuizScreen

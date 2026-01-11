@@ -3,13 +3,14 @@ package com.journey.heroDad.ui.features.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.journey.heroDad.domain.model.kick.Kick
-import com.journey.heroDad.domain.model.recipes.Recipe
-import com.journey.heroDad.domain.model.recipes.RecipeUser
-import com.journey.heroDad.domain.model.user.User
 import com.journey.heroDad.domain.repository.DashboardRepository
 import com.journey.heroDad.utils.components.network.ResultWrapper
+import com.journey.heroDad.utils.components.widget.ChartPoint
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 
@@ -17,32 +18,35 @@ import org.koin.core.component.KoinComponent
 // because we wanted to explore this way of DI too.
 // So you can wither access the repo by inject() from KoinComponent
 // or declare the viewModelModule separately to provide the dependencies.
+
+data class DashboardUiState(
+    val kicks: ResultWrapper<List<Kick>> = ResultWrapper.Loading,
+    val weeklyKicks: ResultWrapper<List<ChartPoint>> = ResultWrapper.Loading
+)
+
 class DashboardViewModel(private val dashboardRepository: DashboardRepository) : ViewModel(),
     KoinComponent {
-
-    private val _recipe = MutableStateFlow<ResultWrapper<List<Recipe>>>(ResultWrapper.Loading)
-    val recipe: StateFlow<ResultWrapper<List<Recipe>>> = _recipe
-
     private val _kicks = MutableStateFlow<ResultWrapper<List<Kick>>>(ResultWrapper.Loading)
     val kicks: StateFlow<ResultWrapper<List<Kick>>> = _kicks
 
-    private val _users = MutableStateFlow<ResultWrapper<List<User>>>(ResultWrapper.Loading)
-    val users: StateFlow<ResultWrapper<List<User>>> = _users
+    private val _weeklyKicks =
+        MutableStateFlow<ResultWrapper<List<ChartPoint>>>(ResultWrapper.Loading)
+    val weeklyKicks: StateFlow<ResultWrapper<List<ChartPoint>>> = _weeklyKicks
 
-    private val _recipeUser =
-        MutableStateFlow<ResultWrapper<List<RecipeUser>>>(ResultWrapper.Loading)
-    val recipeUser: StateFlow<ResultWrapper<List<RecipeUser>>> = _recipeUser
-
-    fun getRecipes() {
-        viewModelScope.launch {
-            _recipe.value = ResultWrapper.Loading
-            _recipe.value = dashboardRepository.getRecipes()
-        }
-    }
+    val uiState: StateFlow<DashboardUiState> = combine(kicks, weeklyKicks){
+        kickResult, weeklyKickResult ->
+        DashboardUiState(
+            kicks = kickResult,
+            weeklyKicks = weeklyKickResult
+        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = DashboardUiState()
+    )
 
     fun getKicks() {
         viewModelScope.launch {
-            _recipe.value = ResultWrapper.Loading
             val localKickData = listOf(
                 Kick(
                     id = 1,
@@ -70,17 +74,16 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         }
     }
 
-    fun getUsers() {
-        viewModelScope.launch {
-            _users.value = ResultWrapper.Loading
-            _users.value = dashboardRepository.getUsers()
-        }
-    }
-
-    fun getRecipeUser() {
-        viewModelScope.launch {
-            _recipeUser.value = ResultWrapper.Loading
-            _recipeUser.value = dashboardRepository.getRecipesByUser()
-        }
+    fun getWeeklyKickData() {
+        val weeklyData = listOf(
+            ChartPoint("Mon", 20f),
+            ChartPoint("Tue", 65f),
+            ChartPoint("Wed", 40f),
+            ChartPoint("Thu", 15f),
+            ChartPoint("Fri", 90f),
+            ChartPoint("Sat", 5f),
+            ChartPoint("Sun", 80f)
+        )
+        _weeklyKicks.value = ResultWrapper.Success(weeklyData)
     }
 }

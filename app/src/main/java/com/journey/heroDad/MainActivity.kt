@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.journey.heroDad.navigation.MainNavigation
 import com.journey.heroDad.ui.theme.HeroDadAppTheme
 import com.journey.heroDad.utils.LanguageManager
+import org.koin.androidx.compose.KoinAndroidContext
 
 class MainActivity : ComponentActivity() {
     override fun attachBaseContext(newBase: Context) {
@@ -21,8 +22,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HeroDadAppTheme {
-                MainNavigation()
+            KoinAndroidContext {
+                HeroDadAppTheme {
+                    MainNavigation()
+                }
             }
         }
     }
