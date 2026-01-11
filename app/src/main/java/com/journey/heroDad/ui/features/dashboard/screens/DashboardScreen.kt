@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -33,7 +32,6 @@ import org.koin.androidx.compose.navigation.koinNavViewModel
 @Composable
 fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel()) {
     val uiState by dashboardViewModel.uiState.collectAsState()
-    val scrollState = rememberScrollState()
 
     LaunchedEffect(Lifecycle.State.CREATED) {
         dashboardViewModel.getKicks()

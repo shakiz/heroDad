@@ -3,7 +3,6 @@ package com.journey.heroDad.ui.features.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.journey.heroDad.domain.model.kick.Kick
-import com.journey.heroDad.domain.model.recipes.Recipe
 import com.journey.heroDad.domain.repository.DashboardRepository
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.ChartPoint
@@ -27,10 +26,6 @@ data class DashboardUiState(
 
 class DashboardViewModel(private val dashboardRepository: DashboardRepository) : ViewModel(),
     KoinComponent {
-
-    private val _recipe = MutableStateFlow<ResultWrapper<List<Recipe>>>(ResultWrapper.Loading)
-    val recipe: StateFlow<ResultWrapper<List<Recipe>>> = _recipe
-
     private val _kicks = MutableStateFlow<ResultWrapper<List<Kick>>>(ResultWrapper.Loading)
     val kicks: StateFlow<ResultWrapper<List<Kick>>> = _kicks
 
@@ -52,7 +47,6 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
 
     fun getKicks() {
         viewModelScope.launch {
-            _recipe.value = ResultWrapper.Loading
             val localKickData = listOf(
                 Kick(
                     id = 1,
