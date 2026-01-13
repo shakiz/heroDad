@@ -19,7 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 
 @Composable
@@ -37,6 +39,7 @@ fun StartKickCountCard() {
                 .fillMaxWidth()
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
         ) {
             Box(
                 contentAlignment = Alignment.Center,
@@ -59,9 +62,15 @@ fun StartKickCountCard() {
             ) {
                 Text(
                     text = "Start Session",
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.W700,
+                        fontSize = 18.sp
+                    )
                 )
-                Text(text = "Record movement now!", style = MaterialTheme.typography.bodyMedium)
+                Text(
+                    text = "Record movement now!",
+                    style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp)
+                )
             }
         }
     }

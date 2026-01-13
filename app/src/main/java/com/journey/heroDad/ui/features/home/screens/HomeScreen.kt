@@ -24,12 +24,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.ui.features.dashboard.widget.KickHistoryListItem
 import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
+import com.journey.heroDad.ui.features.home.widget.KickListItem
 import com.journey.heroDad.ui.features.home.widget.StartKickCountCard
+import com.journey.heroDad.ui.features.home.widget.StatCard
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.HeroDadAppBar
-import com.journey.heroDad.ui.features.home.widget.StatCard
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -117,7 +117,7 @@ fun HomeScreen(
                             )
                         } }
                         items(result.data.size) { pos ->
-                            KickHistoryListItem(result.data[pos])
+                            KickListItem(result.data[pos])
                         }
                     }
                 }

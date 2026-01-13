@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.kick.Kick
 import com.journey.heroDad.utils.Utils
@@ -50,7 +51,7 @@ fun KickHistoryListItem(kick: Kick) {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .size(56.dp)
+                        .size(52.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .background(
                             MaterialTheme.colorScheme.surface
@@ -73,21 +74,23 @@ fun KickHistoryListItem(kick: Kick) {
                         text = kick.recordDate,
                         style = MaterialTheme.typography.bodyLarge.copy(
                             color = MaterialTheme.colorScheme.onPrimary,
-                            fontWeight = FontWeight.W600
+                            fontWeight = FontWeight.W600,
+                            fontSize = 14.sp
                         )
                     )
                     Text(
                         text = "${Utils().formatMillisToMinutesSeconds(kick.totalDuration)} ● ${kick.kickType}",
                         style = MaterialTheme.typography.bodyMedium.copy(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.W300
+                            fontWeight = FontWeight.W300,
+                            fontSize = 14.sp
                         )
                     )
                 }
             }
 
             Column(
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -101,7 +104,7 @@ fun KickHistoryListItem(kick: Kick) {
                     text = "Kicks".uppercase(),
                     style = MaterialTheme.typography.bodyMedium.copy(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.W900
+                        fontWeight = FontWeight.W700
                     )
                 )
             }

@@ -52,7 +52,7 @@ fun BottomNavigationBar(navController: NavHostController) {
     }
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.onSurface
+        containerColor = MaterialTheme.colorScheme.tertiary
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
@@ -72,7 +72,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                     Text(
                         item.title,
                         color = if (index == selectedIndex.intValue)
-                            Color.Black
+                            MaterialTheme.colorScheme.onPrimary
                         else Color.Gray
                     )
                 },

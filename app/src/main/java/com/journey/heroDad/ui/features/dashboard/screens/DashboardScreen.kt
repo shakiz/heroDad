@@ -22,9 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.features.dashboard.widget.KickHistoryListItem
 import com.journey.heroDad.ui.features.dashboard.widget.KickTimeStatCard
 import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
-import com.journey.heroDad.ui.features.home.widget.KickListItem
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.AppLineChartWidget
 import org.koin.androidx.compose.navigation.koinNavViewModel
@@ -120,7 +120,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                     val kicks = uiState.kicks.getOrNull().orEmpty()
                     items(kicks.size) { pos ->
                         // REPLACE THIS with the individual row composable used inside KickList
-                        KickListItem(kicks[pos])
+                        KickHistoryListItem(kicks[pos])
                     }
 
                     // 5. Footer Chart as an item

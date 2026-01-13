@@ -39,7 +39,7 @@ fun KickTimeStatCard(title: String, icon: Int, value: String, modifier: Modifier
                     painter = painterResource(icon),
                     contentDescription = "",
                     tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(18.dp)
                 )
                 Text(
                     text = title.uppercase(),

@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -70,7 +71,6 @@ fun AppLineChartWidget(
         Column(modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp, vertical = 16.dp)) {
-            // Title
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onPrimary)
@@ -78,22 +78,31 @@ fun AppLineChartWidget(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Stats row
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = mainValue,
-                    style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onPrimary)
-                )
+            Box {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = mainValue,
+                        style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onPrimary)
+                    )
 
-                Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
 
-                Text(
-                    text = changeText,
-                    color = Color(0xFF4CAF50),
-                    fontSize = 16.sp
-                )
+                    Surface(
+                        shape = RoundedCornerShape(20.dp),
+                        color = Color(0x204CAF50),
+                        border = BorderStroke(1.dp, Color(0xFF223347)),
+                        tonalElevation = 0.dp,
+                    ) {
+                        Text(
+                            text = changeText,
+                            color = Color(0xFF4CAF50),
+                            fontSize = 16.sp,
+                            modifier = Modifier.padding(horizontal = 8.dp)
+                        )
+                    }
+                }
             }
 
             Canvas(

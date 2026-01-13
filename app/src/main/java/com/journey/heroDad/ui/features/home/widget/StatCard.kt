@@ -17,7 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 
 @Composable
@@ -49,19 +51,22 @@ fun StatCard(
                 Text(
                     text = title,
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontWeight = FontWeight.W600
                 )
                 Icon(
                     painter = painterResource(icon),
                     contentDescription = "",
                     tint = accentColor,
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(18.dp)
                 )
             }
             Text(
                 text = value,
-                style = MaterialTheme.typography.headlineLarge,
-                color = MaterialTheme.colorScheme.onSurface
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.W900
             )
 
             Row {
@@ -70,7 +75,7 @@ fun StatCard(
                         painter = painterResource(R.drawable.ic_trend_up),
                         contentDescription = "",
                         modifier = Modifier
-                            .size(20.dp)
+                            .size(18.dp)
                             .padding(2.dp),
                         tint = accentColor
                     )

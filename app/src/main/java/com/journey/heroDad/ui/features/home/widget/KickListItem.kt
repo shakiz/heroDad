@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.kick.Kick
 import com.journey.heroDad.utils.Utils
@@ -51,7 +54,7 @@ fun KickListItem(kick: Kick) {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .size(56.dp)
+                        .size(52.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .background(
                             MaterialTheme.colorScheme.surface
@@ -64,7 +67,7 @@ fun KickListItem(kick: Kick) {
                             text = kick.noOfKicks.toString(),
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.W900,
-                                color = MaterialTheme.colorScheme.primary
+                                color = MaterialTheme.colorScheme.primary,
                             )
                         )
                         Text(
@@ -81,11 +84,17 @@ fun KickListItem(kick: Kick) {
                 ) {
                     Text(
                         text = kick.recordDate,
-                        style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onPrimary)
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            fontSize = 14.sp
+                        )
                     )
                     Text(
                         text = kick.kickType,
-                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp
+                        )
                     )
                 }
             }
@@ -99,21 +108,23 @@ fun KickListItem(kick: Kick) {
                     )
             ) {
                 Row(
-                    modifier = Modifier.padding(8.dp),
+                    modifier = Modifier.padding(4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Spacer(modifier = Modifier.width(4.dp))
                     Icon(
                         painter = painterResource(id = R.drawable.ic_timer),
                         contentDescription = stringResource(R.string.add_recipe),
                         tint = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier
-                            .size(28.dp)
+                            .size(24.dp)
                             .padding(4.dp)
                     )
                     Text(
                         text = Utils().formatMillisToMinutesSeconds(kick.totalDuration),
                         style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
                     )
+                    Spacer(modifier = Modifier.width(4.dp))
                 }
             }
         }
