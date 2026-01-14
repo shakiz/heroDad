@@ -12,7 +12,7 @@ import androidx.navigation.createGraph
 import com.journey.heroDad.ui.features.dashboard.screens.DashboardScreen
 import com.journey.heroDad.ui.features.home.screens.HomeScreen
 import com.journey.heroDad.ui.features.profile.ProfileScreen
-import com.journey.heroDad.ui.features.quiz.QuizScreen
+import com.journey.heroDad.ui.features.quiz.screen.QuizScreen
 import com.journey.heroDad.ui.features.timeline.TimelineScreen
 
 enum class NavRoute {
