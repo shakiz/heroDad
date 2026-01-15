@@ -13,6 +13,7 @@ import com.journey.heroDad.ui.features.dashboard.screens.DashboardScreen
 import com.journey.heroDad.ui.features.home.screens.HomeScreen
 import com.journey.heroDad.ui.features.profile.ProfileScreen
 import com.journey.heroDad.ui.features.quiz.screen.QuizScreen
+import com.journey.heroDad.ui.features.settings.screens.SettingsScreen
 import com.journey.heroDad.ui.features.timeline.TimelineScreen
 
 enum class NavRoute {
@@ -20,6 +21,7 @@ enum class NavRoute {
     DASHBOARD,
     TIMELINE,
     QUIZ,
+    SETTINGS,
     PROFILE
 }
 
@@ -56,9 +58,9 @@ fun MainNavigation() {
                 QuizScreen()
             }
             composable(
-                route = NavRoute.PROFILE.name,
+                route = NavRoute.SETTINGS.name,
             ) {
-                ProfileScreen()
+                SettingsScreen(navController = mainNavController)
             }
         }
         NavHost(mainNavController, graph = graph, modifier = Modifier.padding(innerPadding))
