@@ -41,9 +41,9 @@ fun BottomNavigationBar(navController: NavHostController) {
             route = NavRoute.QUIZ.name
         ),
         NavigationItem(
-            title = "Profile",
-            icon = R.drawable.ic_profile,
-            route = NavRoute.PROFILE.name
+            title = "Settings",
+            icon = R.drawable.ic_settings,
+            route = NavRoute.SETTINGS.name
         )
 
     )
