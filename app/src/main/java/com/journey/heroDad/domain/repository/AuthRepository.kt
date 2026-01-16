@@ -5,7 +5,7 @@ import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
-    fun login()
+    suspend fun login(): Boolean
     suspend fun logout()
     suspend fun getTodos() : TodoData
 

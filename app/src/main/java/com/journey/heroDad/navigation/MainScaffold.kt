@@ -1,6 +1,7 @@
 package com.journey.heroDad.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,13 +24,14 @@ fun MainScaffold(navController: NavController) {
         bottomBar = {
             BottomNavigationBar(navController = mainNavController)
         }
-    ) {
+    ) { innerPadding ->
         NavHost(
-            startDestination = NavRoute.HOME.name,
-            navController = mainNavController
+            startDestination = NavRoute.HOME_PAGE.name,
+            navController = mainNavController,
+            modifier = Modifier.padding(innerPadding)
         ) {
             composable(
-                route = NavRoute.HOME.name,
+                route = NavRoute.HOME_PAGE.name,
             ) {
                 HomeScreen(navController = mainNavController)
             }

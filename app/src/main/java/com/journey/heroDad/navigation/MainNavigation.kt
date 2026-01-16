@@ -11,7 +11,7 @@ import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 
 enum class NavRoute {
     LOGIN,
-    HOME,
+    HOME_PAGE,
     DASHBOARD,
     TIMELINE,
     QUIZ,

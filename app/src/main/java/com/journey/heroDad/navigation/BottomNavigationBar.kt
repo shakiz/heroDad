@@ -23,7 +23,7 @@ fun BottomNavigationBar(navController: NavHostController) {
         NavigationItem(
             title = "Home",
             icon = R.drawable.ic_home,
-            route = NavRoute.HOME.name
+            route = NavRoute.HOME_PAGE.name
         ),
         NavigationItem(
             title = "Dashboard",

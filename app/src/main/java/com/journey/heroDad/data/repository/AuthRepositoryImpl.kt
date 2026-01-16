@@ -13,8 +13,9 @@ class AuthRepositoryImpl(
     private val authPreferences: AuthPreferences
 ) : AuthRepository {
 
-    override fun login() {
-
+    override suspend fun login(): Boolean {
+        authPreferences.saveToken("token")
+        return true
     }
 
     override suspend fun logout() {
