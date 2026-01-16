@@ -113,6 +113,9 @@ dependencies {
     implementation(libs.com.squareup.retrofit2.retrofit)
     implementation(libs.com.squareup.retrofit2.converter.gson)
 
+    //DataStore
+    implementation(libs.androidx.datastore.preferences)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

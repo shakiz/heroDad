@@ -59,7 +59,9 @@ fun BottomNavigationBar(navController: NavHostController) {
                 selected = selectedIndex.intValue == index,
                 onClick = {
                     selectedIndex.intValue = index
-                    navController.navigate(item.route)
+                    navController.navigate(item.route){
+                        launchSingleTop = true
+                    }
                 },
                 icon = {
                     Icon(

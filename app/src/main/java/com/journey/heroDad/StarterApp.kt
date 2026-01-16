@@ -2,6 +2,7 @@ package com.journey.heroDad
 
 import android.app.Application
 import com.journey.heroDad.di.networkModule
+import com.journey.heroDad.di.preferencesModule
 import com.journey.heroDad.di.repositoryModule
 import com.journey.heroDad.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,7 @@ class StarterApp : Application() {
             // Reference Android context
             androidContext(this@StarterApp)
             // Load modules
-            modules(networkModule, repositoryModule, viewModelModule)
+            modules(networkModule, repositoryModule, viewModelModule, preferencesModule)
         }
     }
 }

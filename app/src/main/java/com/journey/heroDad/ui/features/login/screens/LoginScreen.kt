@@ -1,4 +1,134 @@
 package com.journey.heroDad.ui.features.login.screens
 
-class LoginScreen {
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import com.journey.heroDad.R
+import com.journey.heroDad.ui.features.login.viewmodel.AuthViewModel
+import com.journey.heroDad.ui.features.login.widget.SocialLoginButton
+import org.koin.androidx.compose.koinViewModel
+
+@Composable
+fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
+
+    Scaffold(
+        modifier = Modifier.background(color = MaterialTheme.colorScheme.onPrimary)
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxWidth()
+        ) {
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Illustration
+            Icon(
+                painter = painterResource(id = R.drawable.ic_security), // placeholder
+                contentDescription = null,
+                modifier = Modifier.size(160.dp).fillMaxWidth(),
+                tint = Color.Unspecified
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Title
+            Text(
+                text = "Let’s you in",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Bold
+                )
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            SocialLoginButton(
+                text = "Continue with Facebook",
+                icon = R.drawable.ic_facebook,
+                onClick = {}
+            )
+
+            SocialLoginButton(
+                text = "Continue with Google",
+                icon = R.drawable.ic_google,
+                onClick = {}
+            )
+
+            SocialLoginButton(
+                text = "Continue with Apple",
+                icon = R.drawable.ic_apple,
+                onClick = {}
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Divider
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = "  or Log in with  ",
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Spacer(modifier = Modifier.weight(1f))
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Primary button
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text("Phone Number / Email")
+            }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Footer
+            Row {
+                Text(
+                    text = "New to Leafboard?",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                Text(
+                    text = "Create Account",
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.clickable {
+
+                    }
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+        }
+    }
 }

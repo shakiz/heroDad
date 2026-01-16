@@ -5,12 +5,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.journey.heroDad.navigation.MainNavigation
+import com.journey.heroDad.ui.features.login.viewmodel.AuthState
+import com.journey.heroDad.ui.features.login.viewmodel.AuthViewModel
 import com.journey.heroDad.ui.theme.HeroDadAppTheme
 import com.journey.heroDad.utils.LanguageManager
 import org.koin.androidx.compose.KoinAndroidContext
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
     override fun attachBaseContext(newBase: Context) {
@@ -24,17 +27,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             KoinAndroidContext {
                 HeroDadAppTheme {
-                    MainNavigation()
+                    val authViewModel: AuthViewModel = koinViewModel()
+                    val authState by authViewModel.authState.collectAsState()
+
+                    // Optional splash/loading
+                    if (authState is AuthState.Loading) return@HeroDadAppTheme
+                    MainNavigation(authState = authState)
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DevicePreview() {
-    HeroDadAppTheme {
-        MainNavigation()
     }
 }

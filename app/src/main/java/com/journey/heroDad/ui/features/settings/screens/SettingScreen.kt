@@ -63,8 +63,7 @@ fun SettingsScreen(
         settingsVIewModel.getSettingItem()
     }
 
-    Scaffold(
-    ) {
+    Scaffold { innerPadding ->
         when (val result = uiState.settingsItems) {
             is ResultWrapper.Loading -> {
                 Box(
@@ -79,7 +78,7 @@ fun SettingsScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(16.dp)
+                        .padding(innerPadding)
                 ) {
                     item {
                         Text(

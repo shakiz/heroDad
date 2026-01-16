@@ -2,7 +2,7 @@ package com.journey.heroDad.di
 
 import com.journey.heroDad.BuildConfig
 import com.journey.heroDad.domain.service.DashboardService
-import com.journey.heroDad.domain.service.LoginService
+import com.journey.heroDad.domain.service.AuthService
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -33,8 +33,8 @@ fun provideRetrofit(
         .build()
 }
 
-fun provideService(retrofit: Retrofit): LoginService =
-    retrofit.create(LoginService::class.java)
+fun provideService(retrofit: Retrofit): AuthService =
+    retrofit.create(AuthService::class.java)
 
 fun provideDashboardService(retrofit: Retrofit): DashboardService =
     retrofit.create(DashboardService::class.java)

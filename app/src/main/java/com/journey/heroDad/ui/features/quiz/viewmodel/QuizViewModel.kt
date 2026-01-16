@@ -21,7 +21,6 @@ class QuizViewModel() : ViewModel(),
     KoinComponent {
     private val _quizCategories =
         MutableStateFlow<ResultWrapper<List<QuizCategory>>>(ResultWrapper.Loading)
-    val categories: StateFlow<ResultWrapper<List<QuizCategory>>> = _quizCategories
 
     val uiState: StateFlow<QuizUiState> = _quizCategories.map { quizCategoryResult ->
         QuizUiState(
