@@ -1,30 +1,26 @@
 package com.journey.heroDad.ui.features.login.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
 import com.journey.heroDad.R
 import com.journey.heroDad.ui.features.login.viewmodel.AuthViewModel
 import com.journey.heroDad.ui.features.login.widget.SocialLoginButton
@@ -38,17 +34,17 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding(innerPadding.calculateStartPadding(layoutDirection = LayoutDirection.Ltr) + 16.dp)
                 .fillMaxWidth()
         ) {
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Illustration
-            Icon(
+            Image(
                 painter = painterResource(id = R.drawable.ic_security), // placeholder
                 contentDescription = null,
-                modifier = Modifier.size(160.dp).fillMaxWidth(),
-                tint = Color.Unspecified
+                modifier = Modifier
+                    .height(160.dp)
+                    .fillMaxWidth(),
             )
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -107,25 +103,6 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text("Phone Number / Email")
-            }
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Footer
-            Row {
-                Text(
-                    text = "New to Leafboard?",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Spacer(modifier = Modifier.width(6.dp))
-                Text(
-                    text = "Create Account",
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier.clickable {
-
-                    }
-                )
             }
 
             Spacer(modifier = Modifier.height(24.dp))
