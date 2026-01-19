@@ -1,23 +1,17 @@
 package com.journey.heroDad.navigation
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.createGraph
-import com.journey.heroDad.ui.features.dashboard.screens.DashboardScreen
-import com.journey.heroDad.ui.features.home.screens.HomeScreen
-import com.journey.heroDad.ui.features.profile.ProfileScreen
-import com.journey.heroDad.ui.features.quiz.screen.QuizScreen
-import com.journey.heroDad.ui.features.settings.screens.SettingsScreen
-import com.journey.heroDad.ui.features.timeline.TimelineScreen
+import com.journey.heroDad.navigation.graph.authNavGraph
+import com.journey.heroDad.navigation.graph.mainNavGraph
+import com.journey.heroDad.ui.features.login.AppDestinationResolver
+import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 
 enum class NavRoute {
-    HOME,
+    LOGIN,
+    HOME_PAGE,
     DASHBOARD,
     TIMELINE,
     QUIZ,
@@ -25,44 +19,20 @@ enum class NavRoute {
     PROFILE
 }
 
+enum class NavGraph{
+    HOME,
+    AUTH
+}
+
 @Composable
-fun MainNavigation() {
+fun MainNavigation(authState: AuthState) {
+
     val mainNavController = rememberNavController()
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        bottomBar = {
-            BottomNavigationBar(navController = mainNavController)
-        }
-    ) { innerPadding ->
-        val graph = mainNavController.createGraph(
-            startDestination = NavRoute.HOME.name
-        ) {
-            composable(
-                route = NavRoute.HOME.name,
-            ) {
-                HomeScreen(navController = mainNavController)
-            }
-            composable(
-                route = NavRoute.DASHBOARD.name,
-            ) {
-                DashboardScreen()
-            }
-            composable(
-                route = NavRoute.TIMELINE.name,
-            ) {
-                TimelineScreen()
-            }
-            composable(
-                route = NavRoute.QUIZ.name,
-            ) {
-                QuizScreen()
-            }
-            composable(
-                route = NavRoute.SETTINGS.name,
-            ) {
-                SettingsScreen(navController = mainNavController)
-            }
-        }
-        NavHost(mainNavController, graph = graph, modifier = Modifier.padding(innerPadding))
+    val startDestinationGraph = remember {
+        AppDestinationResolver.resolveAppDestination(authState = authState)
+    }
+    NavHost(navController = mainNavController, startDestination = startDestinationGraph) {
+        authNavGraph(mainNavController)
+        mainNavGraph(mainNavController)
     }
 }

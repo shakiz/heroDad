@@ -23,7 +23,7 @@ fun BottomNavigationBar(navController: NavHostController) {
         NavigationItem(
             title = "Home",
             icon = R.drawable.ic_home,
-            route = NavRoute.HOME.name
+            route = NavRoute.HOME_PAGE.name
         ),
         NavigationItem(
             title = "Dashboard",
@@ -59,7 +59,9 @@ fun BottomNavigationBar(navController: NavHostController) {
                 selected = selectedIndex.intValue == index,
                 onClick = {
                     selectedIndex.intValue = index
-                    navController.navigate(item.route)
+                    navController.navigate(item.route){
+                        launchSingleTop = true
+                    }
                 },
                 icon = {
                     Icon(
