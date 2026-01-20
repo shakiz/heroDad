@@ -1,8 +1,9 @@
 package com.journey.heroDad.domain.model.quiz
 
-data class QuizCategory(
+data class Quiz(
     val id: Int,
     val title: String,
     val description: String,
-    val icon: Int,
+    val questions: List<Questions>,
+    val answers: List<Answers>
 )

@@ -22,19 +22,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.journey.heroDad.domain.model.timeline.TimelineProgressItem
+import com.journey.heroDad.domain.model.timeline.TimelineProgressUIItem
 import com.journey.heroDad.ui.theme.ColorSuccess
-import com.journey.heroDad.ui.theme.ColorSuccessContainer
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun TimelineInProgressCard(modifier: Modifier) {
     val inProgressCheckListItem = listOf(
-        TimelineProgressItem(title = "Schedule 20 week anatomy scan", isChecked = true),
-        TimelineProgressItem(title = "Start researching pediatricians", isChecked = false),
-        TimelineProgressItem(title = "Plan paternity leave", isChecked = false),
-        TimelineProgressItem(title = "Assemble the crib", isChecked = false)
+        TimelineProgressUIItem(title = "Schedule 20 week anatomy scan", isChecked = true),
+        TimelineProgressUIItem(title = "Start researching pediatricians", isChecked = false),
+        TimelineProgressUIItem(title = "Plan paternity leave", isChecked = false),
+        TimelineProgressUIItem(title = "Assemble the crib", isChecked = false)
     )
     Surface(
         shape = RoundedCornerShape(Dimens.lg),
