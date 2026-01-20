@@ -25,7 +25,7 @@ fun KickTimeStatCard(title: String, icon: Int, value: String, modifier: Modifier
         modifier = modifier,
         shape = RoundedCornerShape(Dimens.lg),
         color = MaterialTheme.colorScheme.tertiary,
-        tonalElevation = 1.dp
+        tonalElevation = 0.dp
     ) {
         Column(
             modifier = Modifier.padding(Dimens.lg),

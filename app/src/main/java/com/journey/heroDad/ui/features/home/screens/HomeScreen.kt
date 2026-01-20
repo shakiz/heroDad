@@ -27,6 +27,8 @@ import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import com.journey.heroDad.ui.features.home.widget.KickListItem
 import com.journey.heroDad.ui.features.home.widget.StartKickCountCard
 import com.journey.heroDad.ui.features.home.widget.StatCard
+import com.journey.heroDad.ui.theme.ColorSuccess
+import com.journey.heroDad.ui.theme.ColorSuccessContainer
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.HeroDadAppBar
@@ -81,7 +83,7 @@ fun HomeScreen(
                                     value = "12",
                                     subTitle = "On track",
                                     icon = R.drawable.ic_feet,
-                                    accentColor = Color(0xFF4CAF50),
+                                    accentColor = ColorSuccess,
                                     modifier = Modifier.weight(1f),
                                     isKickCount = true
                                 )
@@ -91,7 +93,7 @@ fun HomeScreen(
                                     value = "14 min",
                                     subTitle = "Yesterday, 8:42 PM",
                                     icon = R.drawable.ic_timer,
-                                    accentColor = Color(0xFFFFA726),
+                                    accentColor = ColorSuccess,
                                     modifier = Modifier.weight(1f),
                                     isKickCount = false
                                 )

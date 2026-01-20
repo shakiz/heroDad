@@ -1,8 +1,6 @@
 package com.journey.heroDad.ui.features.home.widget
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,13 +27,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.kick.Kick
+import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.Utils
 import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun KickListItem(kick: Kick) {
     Surface(
-        color = MaterialTheme.colorScheme.primary.copy(alpha = .5f),
+        color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(16.dp),
         border = MaterialTheme.getBorderStroke,
         modifier = Modifier
@@ -59,7 +58,7 @@ fun KickListItem(kick: Kick) {
                         .size(52.dp)
                         .clip(RoundedCornerShape(16.dp))
                         .background(
-                            MaterialTheme.colorScheme.surface
+                            Color(0x2F070918)
                         )
                 ) {
                     Column(
@@ -69,12 +68,11 @@ fun KickListItem(kick: Kick) {
                             text = kick.noOfKicks.toString(),
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.W900,
-                                color = MaterialTheme.colorScheme.primary,
                             )
                         )
                         Text(
                             text = "Kicks",
-                            style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary)
+                            style = MaterialTheme.typography.bodyMedium
                         )
                     }
                 }
@@ -87,14 +85,14 @@ fun KickListItem(kick: Kick) {
                     Text(
                         text = kick.recordDate,
                         style = MaterialTheme.typography.bodyLarge.copy(
-                            color = MaterialTheme.colorScheme.onPrimary,
+                            color = MaterialTheme.colorScheme.onSurface,
                             fontSize = 14.sp
                         )
                     )
                     Text(
                         text = kick.kickType,
                         style = MaterialTheme.typography.bodyMedium.copy(
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = MaterialTheme.colorScheme.onSurface,
                             fontSize = 12.sp
                         )
                     )
@@ -104,9 +102,9 @@ fun KickListItem(kick: Kick) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(Dimens.lg))
                     .background(
-                        MaterialTheme.colorScheme.surface
+                        Color(0x2F070918)
                     )
             ) {
                 Row(
@@ -119,14 +117,14 @@ fun KickListItem(kick: Kick) {
                         contentDescription = stringResource(R.string.add_recipe),
                         tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier
-                            .size(24.dp)
-                            .padding(4.dp)
+                            .size(Dimens.xl)
+                            .padding(Dimens.xs)
                     )
                     Text(
                         text = Utils().formatMillisToMinutesSeconds(kick.totalDuration),
                         style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(Dimens.xs))
                 }
             }
         }

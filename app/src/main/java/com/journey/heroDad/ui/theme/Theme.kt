@@ -9,36 +9,38 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = ColorPrimaryDark,
-    secondary = ColorSecondaryDark,
-    tertiary = ColorTertiaryDark,
-    background = BackgroundPrimaryDark,
-    surface = SurfacePrimaryDark,
-    onPrimary = Color.White,
-    onSecondary = SurfacePrimaryDark,
-    onBackground = Color.White,
-    onSurface = Color.White,
-    error = ColorError,
-    errorContainer = ColorErrorContainer
+    primary = PrimaryDark,
+    onPrimary = OnPrimaryDark,
+    primaryContainer = PrimaryContainerDark,
+    secondary = SecondaryDark,
+    onSecondary = OnSecondaryDark,
+    tertiary = TertiaryDark,
+    onTertiary = OnTertiaryDark,
+    background = ScreenBgDark,
+    surface = CardBgDark,
+    onBackground = OnBackgroundDark,
+    onSurface = OnSurfaceDark,
+    error = ErrorRed,
+    onError = OnErrorWhite
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = ColorPrimaryLight,
-    secondary = ColorSecondaryLight,
-    tertiary = ColorTertiaryLight,
-    background = BackgroundPrimaryLight,
-    surface = SurfacePrimaryLight,
-    onPrimary = Color.White,
-    onSecondary = Color.White,
+    primary = PrimaryLight,
+    onPrimary = OnPrimaryLight,
+    primaryContainer = PrimaryContainerLight,
+    secondary = SecondaryLight,
+    onSecondary = OnSecondaryLight,
+    tertiary = TertiaryLight,
     onTertiary = OnTertiaryLight,
+    background = ScreenBgLight,
+    surface = CardBgLight,
     onBackground = OnBackgroundLight,
     onSurface = OnSurfaceLight,
-    error = ColorError,
-    errorContainer = ColorErrorContainer,
+    error = ErrorRed,
+    onError = OnErrorWhite
 )
 
 @Composable

@@ -27,11 +27,11 @@ import com.journey.heroDad.ui.theme.Dimens
 fun StartKickCountCard() {
     Surface(
         shape = RoundedCornerShape(40.dp),
-        color = MaterialTheme.colorScheme.primary,
+        color = MaterialTheme.colorScheme.surface,
         modifier = Modifier
             .fillMaxWidth()
             .padding(Dimens.lg),
-        tonalElevation = 1.dp
+        tonalElevation = 0.dp
     ) {
         Row(
             modifier = Modifier

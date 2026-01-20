@@ -85,7 +85,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                             shape = RoundedCornerShape(Dimens.lg),
                             color = MaterialTheme.colorScheme.tertiary,
                             border = MaterialTheme.getBorderStroke,
-                            tonalElevation = 1.dp
+                            tonalElevation = 0.dp
                         ) {
                             Column(
                                 modifier = Modifier.padding(Dimens.lg)
