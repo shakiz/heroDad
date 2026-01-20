@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -27,7 +26,7 @@ import com.journey.heroDad.utils.extensions.getBorderStroke
 fun TimelineUpcomingCard(modifier: Modifier) {
     Surface(
         shape = RoundedCornerShape(Dimens.lg),
-        color = BlueSoft,
+        color = MaterialTheme.colorScheme.surface,
         border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = modifier

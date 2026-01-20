@@ -148,7 +148,6 @@ fun SettingsScreen(
                                 Text(
                                     text = "Logout",
                                     style = MaterialTheme.typography.titleLarge.copy(
-                                        fontWeight = FontWeight.W700,
                                         fontSize = 18.sp,
                                         color = MaterialTheme.colorScheme.error
                                     )

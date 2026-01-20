@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.journey.heroDad.ui.theme.ColorSuccess
 import com.journey.heroDad.ui.theme.ColorSuccessContainer
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.extensions.getBorderStroke
@@ -18,7 +19,7 @@ import com.journey.heroDad.utils.extensions.getBorderStroke
 fun TimelineCompletedCard(modifier: Modifier) {
     Surface(
         shape = RoundedCornerShape(Dimens.lg),
-        color = ColorSuccessContainer,
+        color = ColorSuccess,
         border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = modifier
