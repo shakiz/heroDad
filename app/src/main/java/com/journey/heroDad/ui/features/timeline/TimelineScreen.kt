@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.ui.features.timeline.widget.TimelineCompletedCard
 import com.journey.heroDad.ui.features.timeline.widget.TimelineInProgressCard
@@ -46,22 +45,21 @@ fun TimelineScreen() {
                 ) {
                     Text(
                         "Current Progress",
-                        style = MaterialTheme.typography.titleMedium.copy(
+                        style = MaterialTheme.typography.bodySmall.copy(
                             fontWeight = FontWeight.W400,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f),
-                            fontSize = 12.sp
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .7f),
                         )
                     )
                     Spacer(modifier = Modifier.width(Dimens.sm))
                     Text(
                         "Month 5 of 9",
-                        style = MaterialTheme.typography.titleMedium.copy(
+                        style = MaterialTheme.typography.bodySmall.copy(
                             fontWeight = FontWeight.W400,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f),
-                            fontSize = 12.sp
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .7f),
                         )
                     )
                 }
+                Spacer(modifier = Modifier.height(Dimens.xs))
                 LinearProgressIndicator(
                     progress = { .4f },
                     modifier = Modifier

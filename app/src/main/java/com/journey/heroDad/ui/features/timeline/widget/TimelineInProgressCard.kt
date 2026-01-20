@@ -1,6 +1,5 @@
 package com.journey.heroDad.ui.features.timeline.widget
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,11 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.domain.model.timeline.TimelineProgressItem
+import com.journey.heroDad.ui.theme.ColorSuccessContainer
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.extensions.getBorderStroke
 
@@ -38,7 +37,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
     )
     Surface(
         shape = RoundedCornerShape(Dimens.lg),
-        color = Color(0xFF162330),
+        color = MaterialTheme.colorScheme.surface,
         border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = modifier
@@ -46,14 +45,14 @@ fun TimelineInProgressCard(modifier: Modifier) {
         Column(modifier = modifier) {
             Surface(
                 shape = RoundedCornerShape(Dimens.lg),
-                color = Color(0x204CAF50),
+                color = ColorSuccessContainer,
                 border = MaterialTheme.getBorderStroke,
                 tonalElevation = 0.dp,
             ) {
                 Text(
                     "Current Stage",
                     style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.primary,
+                        color = MaterialTheme.colorScheme.onSurface,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.W700
                     ),
@@ -62,13 +61,13 @@ fun TimelineInProgressCard(modifier: Modifier) {
             }
             Text(
                 "Month 5: The Bump Appears",
-                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W600)
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.W600)
             )
             Text(
                 "The baby growing rapidly. You might feel the first kicks this month! It's time to start planning the practicalities.",
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontWeight = FontWeight.W400,
-                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f)
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f)
                 )
             )
             Spacer(modifier = Modifier.height(Dimens.sm))
@@ -81,7 +80,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                     "Task Completed",
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.W400,
-                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f),
                         fontSize = 12.sp
                     )
                 )
@@ -90,7 +89,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                     "1 of 4",
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.W400,
-                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f),
                         fontSize = 12.sp
                     )
                 )
@@ -123,9 +122,9 @@ fun TimelineInProgressCard(modifier: Modifier) {
                         Text(
                             progressItem.title, style = MaterialTheme.typography.bodyMedium.copy(
                                 color = if (progressItem.isChecked) {
-                                    MaterialTheme.colorScheme.onPrimary.copy(alpha = .4f)
+                                    MaterialTheme.colorScheme.onSurface.copy(alpha = .4f)
                                 } else {
-                                    MaterialTheme.colorScheme.onPrimary
+                                    MaterialTheme.colorScheme.onSurface
                                 }
                             )
                         )

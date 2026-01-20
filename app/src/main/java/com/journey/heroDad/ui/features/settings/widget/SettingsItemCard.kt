@@ -18,13 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.settings.SettingsItem
 import com.journey.heroDad.ui.features.settings.screens.SettingsEnum
+import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
 fun SettingsItemCard(
@@ -47,7 +47,7 @@ fun SettingsItemCard(
                     .size(52.dp)
                     .clip(RoundedCornerShape(16.dp))
                     .background(
-                        MaterialTheme.colorScheme.surface
+                        Color(0x2F070918)
                     )
             ) {
                 Icon(
@@ -60,10 +60,7 @@ fun SettingsItemCard(
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = settingsItem.title,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.W700,
-                    fontSize = 18.sp
-                )
+                style = MaterialTheme.typography.titleMedium
             )
         }
         Spacer(modifier = Modifier.width(12.dp))
@@ -79,8 +76,8 @@ fun SettingsItemCard(
                 painter = painterResource(R.drawable.ic_arrow_forward),
                 contentDescription = "",
                 modifier = Modifier
-                    .padding(12.dp)
-                    .size(20.dp),
+                    .padding(Dimens.md)
+                    .size(Dimens.lg),
                 tint = MaterialTheme.colorScheme.secondary,
             )
         }

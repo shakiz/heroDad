@@ -34,6 +34,8 @@ import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.ui.theme.Dimens
+import com.journey.heroDad.ui.theme.ColorSuccess
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 data class ChartPoint(
     val label: String,
@@ -64,17 +66,19 @@ fun AppLineChartWidget(
 
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(Dimens.lg),
-        color = Color(0xFF162330),
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        shape = RoundedCornerShape(20.dp),
+        color = MaterialTheme.colorScheme.surface,
+        border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp
     ) {
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = Dimens.lg, vertical = Dimens.lg)) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 16.dp)
+        ) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onPrimary)
+                style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onSurface)
             )
 
             Spacer(modifier = Modifier.height(Dimens.sm))
@@ -85,20 +89,20 @@ fun AppLineChartWidget(
                 ) {
                     Text(
                         text = mainValue,
-                        style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onPrimary)
+                        style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onSurface)
                     )
 
                     Spacer(modifier = Modifier.width(Dimens.sm))
 
                     Surface(
-                        shape = RoundedCornerShape(Dimens.lg),
+                        shape = RoundedCornerShape(20.dp),
                         color = Color(0x204CAF50),
-                        border = BorderStroke(1.dp, Color(0xFF223347)),
+                        border = MaterialTheme.getBorderStroke,
                         tonalElevation = 0.dp,
                     ) {
                         Text(
                             text = changeText,
-                            color = Color(0xFF4CAF50),
+                            color = ColorSuccess,
                             fontSize = 16.sp,
                             modifier = Modifier.padding(horizontal = Dimens.sm)
                         )

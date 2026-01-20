@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.theme.BlueSoft
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.extensions.getBorderStroke
 
@@ -26,7 +27,7 @@ import com.journey.heroDad.utils.extensions.getBorderStroke
 fun TimelineUpcomingCard(modifier: Modifier) {
     Surface(
         shape = RoundedCornerShape(Dimens.lg),
-        color = Color(0xFF162330),
+        color = BlueSoft,
         border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = modifier
@@ -40,7 +41,7 @@ fun TimelineUpcomingCard(modifier: Modifier) {
                 Text(
                     "Upcoming".uppercase(),
                     style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f),
                         fontSize = 14.sp
                     )
                 )
@@ -57,7 +58,7 @@ fun TimelineUpcomingCard(modifier: Modifier) {
             Text(
                 "Focus on Hospital Planning and Classes",
                 style = MaterialTheme.typography.bodyMedium.copy(
-                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f),
                     fontSize = 14.sp
                 )
             )

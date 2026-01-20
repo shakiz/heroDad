@@ -1,6 +1,5 @@
 package com.journey.heroDad.ui.features.dashboard.widget
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,7 +31,7 @@ import com.journey.heroDad.utils.extensions.getBorderStroke
 @Composable
 fun KickHistoryListItem(kick: Kick) {
     Surface(
-        color = MaterialTheme.colorScheme.tertiary,
+        color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(Dimens.lg),
         border = MaterialTheme.getBorderStroke,
         modifier = Modifier
@@ -56,7 +55,7 @@ fun KickHistoryListItem(kick: Kick) {
                         .size(52.dp)
                         .clip(RoundedCornerShape(Dimens.lg))
                         .background(
-                            MaterialTheme.colorScheme.surface
+                            Color(0x2F070918)
                         )
                 ) {
                     Icon(
@@ -75,7 +74,7 @@ fun KickHistoryListItem(kick: Kick) {
                     Text(
                         text = kick.recordDate,
                         style = MaterialTheme.typography.bodyLarge.copy(
-                            color = MaterialTheme.colorScheme.onPrimary,
+                            color = MaterialTheme.colorScheme.onSurface,
                             fontWeight = FontWeight.W600,
                             fontSize = 14.sp
                         )
@@ -83,9 +82,7 @@ fun KickHistoryListItem(kick: Kick) {
                     Text(
                         text = "${Utils().formatMillisToMinutesSeconds(kick.totalDuration)} & ${kick.kickType}",
                         style = MaterialTheme.typography.bodyMedium.copy(
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.W300,
-                            fontSize = 14.sp
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f),
                         )
                     )
                 }
@@ -98,7 +95,7 @@ fun KickHistoryListItem(kick: Kick) {
                 Text(
                     text = kick.noOfKicks.toString(),
                     style = MaterialTheme.typography.titleLarge.copy(
-                        color = MaterialTheme.colorScheme.onPrimary,
+                        color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.W900
                     )
                 )
