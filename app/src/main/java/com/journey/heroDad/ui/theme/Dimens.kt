@@ -11,5 +11,6 @@ object Dimens {
 
     val buttonHeight = 40.dp
     val iconSize = 24.dp
+    val iconSizeSmall = 20.dp
     val chipHeight = 36.dp
 }

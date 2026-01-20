@@ -18,7 +18,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
-import com.journey.heroDad.ui.theme.BlueSoft
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.extensions.getBorderStroke
 

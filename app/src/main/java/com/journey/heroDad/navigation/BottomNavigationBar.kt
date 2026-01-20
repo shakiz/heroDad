@@ -1,5 +1,6 @@
 package com.journey.heroDad.navigation
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -11,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
@@ -52,14 +53,15 @@ fun BottomNavigationBar(navController: NavHostController) {
     }
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.tertiary
+        containerColor = MaterialTheme.colorScheme.secondary,
+        windowInsets = WindowInsets(8, 0, 0, 8),
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = selectedIndex.intValue == index,
                 onClick = {
                     selectedIndex.intValue = index
-                    navController.navigate(item.route){
+                    navController.navigate(item.route) {
                         launchSingleTop = true
                     }
                 },
@@ -67,20 +69,24 @@ fun BottomNavigationBar(navController: NavHostController) {
                     Icon(
                         painter = painterResource(item.icon),
                         contentDescription = item.title,
-                        modifier = Modifier.size(20.dp)
+                        modifier = Modifier.size(Dimens.iconSizeSmall),
+                        tint = if (index == selectedIndex.intValue)
+                            MaterialTheme.colorScheme.onSurface
+                        else MaterialTheme.colorScheme.onSecondary
                     )
                 },
                 label = {
                     Text(
                         item.title,
+                        fontSize = 11.sp,
                         color = if (index == selectedIndex.intValue)
                             MaterialTheme.colorScheme.onPrimary
-                        else Color.Gray
+                        else MaterialTheme.colorScheme.onSecondary
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.secondary,
-                    indicatorColor = MaterialTheme.colorScheme.primary
+                    selectedIconColor = MaterialTheme.colorScheme.onSurface,
+                    indicatorColor = MaterialTheme.colorScheme.surface
                 )
             )
         }
