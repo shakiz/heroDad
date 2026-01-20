@@ -39,7 +39,7 @@ fun TimelineUpcomingCard(modifier: Modifier) {
                 Text(
                     "Upcoming".uppercase(),
                     style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f),
+                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
                         fontSize = 14.sp
                     )
                 )
@@ -56,7 +56,7 @@ fun TimelineUpcomingCard(modifier: Modifier) {
             Text(
                 "Focus on Hospital Planning and Classes",
                 style = MaterialTheme.typography.bodyMedium.copy(
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f),
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
                     fontSize = 14.sp
                 )
             )

@@ -115,14 +115,14 @@ fun KickListItem(kick: Kick) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_timer),
                         contentDescription = stringResource(R.string.add_recipe),
-                        tint = MaterialTheme.colorScheme.onPrimary,
+                        tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier
                             .size(24.dp)
                             .padding(4.dp)
                     )
                     Text(
                         text = Utils().formatMillisToMinutesSeconds(kick.totalDuration),
-                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                 }

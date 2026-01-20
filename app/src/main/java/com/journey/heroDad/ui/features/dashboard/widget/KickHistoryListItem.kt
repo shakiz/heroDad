@@ -79,7 +79,7 @@ fun KickHistoryListItem(kick: Kick) {
                         )
                     )
                     Text(
-                        text = "${Utils().formatMillisToMinutesSeconds(kick.totalDuration)} ● ${kick.kickType}",
+                        text = "${Utils().formatMillisToMinutesSeconds(kick.totalDuration)} & ${kick.kickType}",
                         style = MaterialTheme.typography.bodyMedium.copy(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontWeight = FontWeight.W300,

@@ -35,7 +35,7 @@ fun TimelineCompletedCard(modifier: Modifier) {
                 "Month 4: Second Trimester",
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.W600,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f)
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f)
                 )
             )
         }

@@ -30,12 +30,13 @@ fun TimelineScreen() {
         item {
             Column(
                 modifier = Modifier
-                    .padding(12.dp)
+                    .padding(16.dp)
                     .fillMaxWidth()
             ) {
                 Text(
                     "Timeline",
-                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900)
+                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900),
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Row(
                     modifier = Modifier.fillMaxWidth(),

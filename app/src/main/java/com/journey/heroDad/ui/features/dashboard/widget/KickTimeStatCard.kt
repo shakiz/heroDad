@@ -50,7 +50,7 @@ fun KickTimeStatCard(title: String, icon: Int, value: String, modifier: Modifier
             Text(
                 text = value,
                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900),
-                color = MaterialTheme.colorScheme.onPrimary
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }

@@ -59,15 +59,20 @@ fun HeroDadAppBar() {
             ) {
                 Text(
                     text = stringResource(R.string.app_name),
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
-                Text(text = "Hi, Dad!", style = MaterialTheme.typography.bodyMedium)
+                Text(
+                    text = "Hi, Dad!",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
             }
         }
         Icon(
             painter = painterResource(id = R.drawable.ic_notification),
             contentDescription = stringResource(R.string.add_recipe),
-            tint = MaterialTheme.colorScheme.onPrimary,
+            tint = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.size(30.dp)
         )
     }

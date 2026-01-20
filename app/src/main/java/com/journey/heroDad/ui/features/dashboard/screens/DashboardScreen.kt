@@ -66,11 +66,13 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                         ) {
                             Text(
                                 "Trends",
-                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900)
+                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W900),
+                                color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
                                 "Your baby's movement insights",
-                                style = MaterialTheme.typography.bodyMedium
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurface
                             )
                         }
                     }
@@ -106,7 +108,11 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                                 .padding(horizontal = 16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Text("History", style = MaterialTheme.typography.titleMedium)
+                            Text(
+                                "History",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
                             Text(
                                 "View All",
                                 style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.primary)
@@ -114,12 +120,8 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                         }
                     }
 
-                    // 4. IMPORTANT: Do not call KickList() if it contains a LazyColumn.
-                    // Instead, extract its row logic directly here:
-
                     val kicks = uiState.kicks.getOrNull().orEmpty()
                     items(kicks.size) { pos ->
-                        // REPLACE THIS with the individual row composable used inside KickList
                         KickHistoryListItem(kicks[pos])
                     }
 

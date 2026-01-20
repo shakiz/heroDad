@@ -64,9 +64,9 @@ fun TimelineInProgressCard(modifier: Modifier) {
             )
             Text(
                 "The baby growing rapidly. You might feel the first kicks this month! It's time to start planning the practicalities.",
-                style = MaterialTheme.typography.titleMedium.copy(
+                style = MaterialTheme.typography.bodyMedium.copy(
                     fontWeight = FontWeight.W400,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f)
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f)
                 )
             )
             Spacer(modifier = Modifier.height(8.dp))
@@ -79,7 +79,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                     "Task Completed",
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.W400,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f),
+                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
                         fontSize = 12.sp
                     )
                 )
@@ -88,11 +88,12 @@ fun TimelineInProgressCard(modifier: Modifier) {
                     "1 of 4",
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.W400,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f),
+                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f),
                         fontSize = 12.sp
                     )
                 )
             }
+            Spacer(modifier = Modifier.height(4.dp))
             LinearProgressIndicator(
                 progress = { .6f },
                 modifier = Modifier
@@ -120,7 +121,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                         Text(
                             progressItem.title, style = MaterialTheme.typography.bodyMedium.copy(
                                 color = if (progressItem.isChecked) {
-                                    MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = .5f)
+                                    MaterialTheme.colorScheme.onPrimary.copy(alpha = .4f)
                                 } else {
                                     MaterialTheme.colorScheme.onPrimary
                                 }
