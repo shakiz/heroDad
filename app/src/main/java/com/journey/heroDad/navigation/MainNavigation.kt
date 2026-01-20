@@ -20,7 +20,7 @@ enum class NavRoute {
 }
 
 enum class NavGraph{
-    HOME,
+    MAIN,
     AUTH
 }
 

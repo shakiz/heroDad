@@ -148,11 +148,12 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
 
                     is AuthState.LoggedIn -> {
                         navController.navigate(
-                            NavGraph.HOME
+                            NavGraph.MAIN.name
                         ) {
-                            popUpTo(NavRoute.LOGIN) {
+                            popUpTo(navController.graph.startDestinationId) {
                                 inclusive = true
                             }
+                            launchSingleTop = true
                         }
                     }
 
