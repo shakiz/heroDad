@@ -19,12 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import com.journey.heroDad.R
 import com.journey.heroDad.ui.features.dashboard.widget.KickHistoryListItem
 import com.journey.heroDad.ui.features.dashboard.widget.KickTimeStatCard
 import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
+import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.AppLineChartWidget
 import org.koin.androidx.compose.navigation.koinNavViewModel
@@ -61,7 +61,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                     item {
                         Column(
                             modifier = Modifier
-                                .padding(12.dp)
+                                .padding(Dimens.md)
                                 .fillMaxWidth()
                         ) {
                             Text(
@@ -82,8 +82,8 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 12.dp, vertical = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(12.dp)
+                                .padding(horizontal = Dimens.md, vertical = Dimens.sm),
+                            horizontalArrangement = Arrangement.spacedBy(Dimens.md)
                         ) {
                             KickTimeStatCard(
                                 "Avg Duration",
@@ -105,7 +105,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
+                                .padding(horizontal = Dimens.lg),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
@@ -130,7 +130,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel())
                         AppLineChartWidget(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
+                                .padding(Dimens.lg),
                             points = uiState.weeklyKicks.getOrNull().orEmpty()
                         )
                     }

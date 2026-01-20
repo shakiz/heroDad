@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.journey.heroDad.ui.features.timeline.widget.TimelineCompletedCard
 import com.journey.heroDad.ui.features.timeline.widget.TimelineInProgressCard
 import com.journey.heroDad.ui.features.timeline.widget.TimelineUpcomingCard
+import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
 fun TimelineScreen() {
@@ -30,7 +31,7 @@ fun TimelineScreen() {
         item {
             Column(
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(Dimens.lg)
                     .fillMaxWidth()
             ) {
                 Text(
@@ -51,7 +52,7 @@ fun TimelineScreen() {
                             fontSize = 12.sp
                         )
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(Dimens.sm))
                     Text(
                         "Month 5 of 9",
                         style = MaterialTheme.typography.titleMedium.copy(
@@ -66,7 +67,7 @@ fun TimelineScreen() {
                     modifier = Modifier
                         .clip(CircleShape)
                         .fillMaxWidth()
-                        .height(8.dp),
+                        .height(Dimens.sm),
                     color = MaterialTheme.colorScheme.primary,
                     trackColor = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -76,21 +77,21 @@ fun TimelineScreen() {
             TimelineCompletedCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(Dimens.lg)
             )
         }
         item {
             TimelineInProgressCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(Dimens.lg)
             )
         }
         item {
             TimelineUpcomingCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(Dimens.lg)
             )
         }
     }

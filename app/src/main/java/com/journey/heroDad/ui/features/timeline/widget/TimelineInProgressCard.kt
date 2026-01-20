@@ -25,6 +25,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.domain.model.timeline.TimelineProgressItem
+import com.journey.heroDad.ui.theme.Dimens
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun TimelineInProgressCard(modifier: Modifier) {
@@ -35,17 +37,17 @@ fun TimelineInProgressCard(modifier: Modifier) {
         TimelineProgressItem(title = "Assemble the crib", isChecked = false)
     )
     Surface(
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(Dimens.lg),
         color = Color(0xFF162330),
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = modifier
     ) {
         Column(modifier = modifier) {
             Surface(
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(Dimens.lg),
                 color = Color(0x204CAF50),
-                border = BorderStroke(1.dp, Color(0xFF223347)),
+                border = MaterialTheme.getBorderStroke,
                 tonalElevation = 0.dp,
             ) {
                 Text(
@@ -55,7 +57,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                         fontSize = 14.sp,
                         fontWeight = FontWeight.W700
                     ),
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    modifier = Modifier.padding(horizontal = Dimens.sm)
                 )
             }
             Text(
@@ -69,7 +71,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                     color = MaterialTheme.colorScheme.onPrimary.copy(alpha = .5f)
                 )
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimens.sm))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -83,7 +85,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                         fontSize = 12.sp
                     )
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(Dimens.sm))
                 Text(
                     "1 of 4",
                     style = MaterialTheme.typography.titleMedium.copy(
@@ -99,7 +101,7 @@ fun TimelineInProgressCard(modifier: Modifier) {
                 modifier = Modifier
                     .clip(CircleShape)
                     .fillMaxWidth()
-                    .height(8.dp),
+                    .height(Dimens.sm),
                 color = MaterialTheme.colorScheme.primary,
                 trackColor = MaterialTheme.colorScheme.onSurfaceVariant
             )

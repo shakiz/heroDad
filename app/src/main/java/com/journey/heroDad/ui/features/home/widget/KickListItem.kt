@@ -2,6 +2,7 @@ package com.journey.heroDad.ui.features.home.widget
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,13 +30,14 @@ import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.kick.Kick
 import com.journey.heroDad.utils.Utils
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun KickListItem(kick: Kick) {
     Surface(
-        color = MaterialTheme.colorScheme.tertiary,
+        color = MaterialTheme.colorScheme.primary.copy(alpha = .5f),
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        border = MaterialTheme.getBorderStroke,
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)

@@ -25,24 +25,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.kick.Kick
+import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.Utils
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun KickHistoryListItem(kick: Kick) {
     Surface(
         color = MaterialTheme.colorScheme.tertiary,
-        shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        shape = RoundedCornerShape(Dimens.lg),
+        border = MaterialTheme.getBorderStroke,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = Dimens.lg, vertical = Dimens.sm)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .padding(horizontal = Dimens.lg, vertical = Dimens.md)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -52,7 +54,7 @@ fun KickHistoryListItem(kick: Kick) {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .size(52.dp)
-                        .clip(RoundedCornerShape(16.dp))
+                        .clip(RoundedCornerShape(Dimens.lg))
                         .background(
                             MaterialTheme.colorScheme.surface
                         )
@@ -60,7 +62,7 @@ fun KickHistoryListItem(kick: Kick) {
                     Icon(
                         painter = painterResource(R.drawable.ic_click),
                         contentDescription = "",
-                        modifier = Modifier.padding(12.dp),
+                        modifier = Modifier.padding(Dimens.md),
                         tint = MaterialTheme.colorScheme.secondary
                     )
                 }
@@ -68,7 +70,7 @@ fun KickHistoryListItem(kick: Kick) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start,
-                    modifier = Modifier.padding(horizontal = 12.dp)
+                    modifier = Modifier.padding(horizontal = Dimens.md)
                 ) {
                     Text(
                         text = kick.recordDate,

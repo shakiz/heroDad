@@ -17,17 +17,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
 fun KickTimeStatCard(title: String, icon: Int, value: String, modifier: Modifier) {
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(Dimens.lg),
         color = MaterialTheme.colorScheme.tertiary,
         tonalElevation = 1.dp
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Dimens.lg),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Row(

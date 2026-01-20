@@ -42,7 +42,9 @@ import androidx.navigation.NavController
 import com.journey.heroDad.R
 import com.journey.heroDad.ui.features.settings.viewmodel.SettingsVIewModel
 import com.journey.heroDad.ui.features.settings.widget.SettingsItemCard
+import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
+import com.journey.heroDad.utils.extensions.getBorderStroke
 import org.koin.androidx.compose.navigation.koinNavViewModel
 
 enum class SettingsEnum {
@@ -80,7 +82,7 @@ fun SettingsScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(innerPadding.calculateStartPadding(layoutDirection = LayoutDirection.Ltr) + 16.dp)
+                        .padding(innerPadding.calculateStartPadding(layoutDirection = LayoutDirection.Ltr) + Dimens.lg)
                 ) {
                     item {
                         Text(
@@ -92,18 +94,18 @@ fun SettingsScreen(
                     item {
                         Surface(
                             color = MaterialTheme.colorScheme.tertiary,
-                            shape = RoundedCornerShape(16.dp),
-                            border = BorderStroke(1.dp, Color(0xFF223347)),
+                            shape = RoundedCornerShape(Dimens.lg),
+                            border = MaterialTheme.getBorderStroke,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 8.dp)
+                                .padding(vertical = Dimens.sm)
                         ) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                                    .padding(horizontal = Dimens.lg, vertical = Dimens.md)
                             ) {
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
@@ -113,7 +115,7 @@ fun SettingsScreen(
                                         contentAlignment = Alignment.Center,
                                         modifier = Modifier
                                             .size(52.dp)
-                                            .clip(RoundedCornerShape(16.dp))
+                                            .clip(RoundedCornerShape(Dimens.lg))
                                             .background(
                                                 MaterialTheme.colorScheme.surface
                                             )
@@ -121,7 +123,7 @@ fun SettingsScreen(
                                         Icon(
                                             painter = painterResource(R.drawable.ic_profile),
                                             contentDescription = "",
-                                            modifier = Modifier.padding(12.dp),
+                                            modifier = Modifier.padding(Dimens.md),
                                             tint = MaterialTheme.colorScheme.secondary
                                         )
                                     }
@@ -129,7 +131,7 @@ fun SettingsScreen(
                                     Column(
                                         verticalArrangement = Arrangement.Center,
                                         horizontalAlignment = Alignment.Start,
-                                        modifier = Modifier.padding(horizontal = 12.dp)
+                                        modifier = Modifier.padding(horizontal = Dimens.md)
                                     ) {
                                         Text(
                                             text = "Mark Stevens",
@@ -176,9 +178,9 @@ fun SettingsScreen(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(16.dp))
+                                .clip(RoundedCornerShape(Dimens.lg))
                                 .background(MaterialTheme.colorScheme.tertiary)
-                                .padding(vertical = 8.dp, horizontal = 16.dp)
+                                .padding(vertical = Dimens.sm, horizontal = Dimens.lg)
 
                         ) {
                             result.data.forEach { item ->
@@ -188,19 +190,19 @@ fun SettingsScreen(
                     }
 
                     item {
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(Dimens.lg))
                     }
 
                     item {
                         Surface(
-                            shape = RoundedCornerShape(16.dp),
+                            shape = RoundedCornerShape(Dimens.lg),
                             color = MaterialTheme.colorScheme.tertiary,
                             border = BorderStroke(1.dp, MaterialTheme.colorScheme.error),
                             tonalElevation = 0.dp,
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Row(
-                                modifier = Modifier.padding(12.dp),
+                                modifier = Modifier.padding(Dimens.md),
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center
                             ) {
@@ -210,7 +212,7 @@ fun SettingsScreen(
                                     modifier = Modifier.size(24.dp),
                                     tint = MaterialTheme.colorScheme.error
                                 )
-                                Spacer(modifier = Modifier.width(8.dp))
+                                Spacer(modifier = Modifier.width(Dimens.sm))
                                 Text(
                                     text = "Logout",
                                     style = MaterialTheme.typography.titleLarge.copy(

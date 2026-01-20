@@ -12,13 +12,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.journey.heroDad.ui.theme.Dimens
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun TimelineCompletedCard(modifier: Modifier) {
     Surface(
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(Dimens.lg),
         color = Color(0xFF162330),
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = modifier
     ) {

@@ -21,6 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.theme.Dimens
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun StatCard(
@@ -34,13 +36,13 @@ fun StatCard(
 ) {
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(Dimens.lg),
         color = MaterialTheme.colorScheme.tertiary,
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        border = MaterialTheme.getBorderStroke,
         tonalElevation = 1.dp
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Dimens.lg),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Row(

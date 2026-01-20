@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.journey.heroDad.ui.theme.Dimens
 
 data class ChartPoint(
     val label: String,
@@ -63,20 +64,20 @@ fun AppLineChartWidget(
 
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(Dimens.lg),
         color = Color(0xFF162330),
         border = BorderStroke(1.dp, Color(0xFF223347)),
         tonalElevation = 0.dp
     ) {
         Column(modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp, vertical = 16.dp)) {
+            .padding(horizontal = Dimens.lg, vertical = Dimens.lg)) {
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.onPrimary)
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimens.sm))
 
             Box {
                 Row(
@@ -87,10 +88,10 @@ fun AppLineChartWidget(
                         style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onPrimary)
                     )
 
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(Dimens.sm))
 
                     Surface(
-                        shape = RoundedCornerShape(20.dp),
+                        shape = RoundedCornerShape(Dimens.lg),
                         color = Color(0x204CAF50),
                         border = BorderStroke(1.dp, Color(0xFF223347)),
                         tonalElevation = 0.dp,
@@ -99,7 +100,7 @@ fun AppLineChartWidget(
                             text = changeText,
                             color = Color(0xFF4CAF50),
                             fontSize = 16.sp,
-                            modifier = Modifier.padding(horizontal = 8.dp)
+                            modifier = Modifier.padding(horizontal = Dimens.sm)
                         )
                     }
                 }
@@ -192,7 +193,7 @@ fun AppLineChartWidget(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp),
+                    .padding(top = Dimens.sm),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 points.forEach {

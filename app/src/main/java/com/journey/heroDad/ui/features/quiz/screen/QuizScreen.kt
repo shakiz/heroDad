@@ -34,7 +34,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import com.journey.heroDad.ui.features.quiz.viewmodel.QuizViewModel
 import com.journey.heroDad.ui.features.quiz.widget.QuizCategoryListItem
+import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
+import com.journey.heroDad.utils.extensions.getBorderStroke
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -58,7 +60,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
             is ResultWrapper.Success -> {
                 LazyColumn(
                     modifier = Modifier
-                        .padding(12.dp)
+                        .padding(Dimens.md)
                         .fillMaxWidth()
                 ) {
                     item {
@@ -75,18 +77,18 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                     }
 
                     item {
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(Dimens.md))
                     }
 
                     item {
                         Surface(
-                            shape = RoundedCornerShape(16.dp),
+                            shape = RoundedCornerShape(Dimens.lg),
                             color = MaterialTheme.colorScheme.tertiary,
-                            border = BorderStroke(1.dp, Color(0xFF223347)),
+                            border = MaterialTheme.getBorderStroke,
                             tonalElevation = 1.dp
                         ) {
                             Column(
-                                modifier = Modifier.padding(16.dp)
+                                modifier = Modifier.padding(Dimens.lg)
                             ) {
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
@@ -100,11 +102,11 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                                             color = MaterialTheme.colorScheme.onPrimary,
                                         )
                                     )
-                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Spacer(modifier = Modifier.width(Dimens.sm))
                                     Surface(
-                                        shape = RoundedCornerShape(20.dp),
+                                        shape = RoundedCornerShape(Dimens.lg),
                                         color = MaterialTheme.colorScheme.secondary.copy(alpha = .1f),
-                                        border = BorderStroke(1.dp, Color(0xFF223347)),
+                                        border = MaterialTheme.getBorderStroke,
                                         tonalElevation = 0.dp,
                                     ) {
                                         Text(
@@ -114,7 +116,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                                                 color = MaterialTheme.colorScheme.primary,
                                                 fontSize = 12.sp
                                             ),
-                                            modifier = Modifier.padding(horizontal = 16.dp)
+                                            modifier = Modifier.padding(horizontal = Dimens.lg)
                                         )
                                     }
                                 }
@@ -124,7 +126,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                                     modifier = Modifier
                                         .clip(CircleShape)
                                         .fillMaxWidth()
-                                        .height(8.dp),
+                                        .height(Dimens.sm),
                                     color = MaterialTheme.colorScheme.primary,
                                     trackColor = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -141,7 +143,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         )
                                     )
-                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Spacer(modifier = Modifier.width(Dimens.sm))
                                     Text(
                                         "Keep going",
                                         style = MaterialTheme.typography.titleMedium.copy(
@@ -149,7 +151,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                                             color = MaterialTheme.colorScheme.primary,
                                             fontSize = 12.sp
                                         ),
-                                        modifier = Modifier.padding(horizontal = 16.dp)
+                                        modifier = Modifier.padding(horizontal = Dimens.lg)
                                     )
                                 }
                             }
@@ -157,7 +159,7 @@ fun QuizScreen(quizViewModel: QuizViewModel = koinViewModel()) {
                     }
 
                     item {
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(Dimens.md))
                     }
 
                     item {

@@ -26,13 +26,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.journey.heroDad.R
 import com.journey.heroDad.domain.model.quiz.QuizCategory
+import com.journey.heroDad.ui.theme.Dimens
+import com.journey.heroDad.utils.extensions.getBorderStroke
 
 @Composable
 fun QuizCategoryListItem(quizCategory: QuizCategory) {
     Surface(
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(Dimens.lg),
         color = MaterialTheme.colorScheme.tertiary,
-        border = BorderStroke(1.dp, Color(0xFF223347)),
+        border = MaterialTheme.getBorderStroke,
         tonalElevation = 0.dp,
         modifier = Modifier
             .fillMaxWidth()
@@ -43,7 +45,7 @@ fun QuizCategoryListItem(quizCategory: QuizCategory) {
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .padding(horizontal = Dimens.lg, vertical = Dimens.md)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -52,7 +54,7 @@ fun QuizCategoryListItem(quizCategory: QuizCategory) {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .size(48.dp)
+                        .size(Dimens.sm)
                         .clip(CircleShape)
                         .background(
                             MaterialTheme.colorScheme.primary.copy(alpha = .5f)
@@ -62,14 +64,14 @@ fun QuizCategoryListItem(quizCategory: QuizCategory) {
                         painter = painterResource(id = quizCategory.icon),
                         contentDescription = stringResource(R.string.add_recipe),
                         tint = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(Dimens.sm)
                     )
                 }
 
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start,
-                    modifier = Modifier.padding(horizontal = 12.dp)
+                    modifier = Modifier.padding(horizontal = Dimens.md)
                 ) {
                     Text(
                         text = quizCategory.title,

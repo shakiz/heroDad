@@ -20,7 +20,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.journey.heroDad.R
@@ -28,6 +27,7 @@ import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import com.journey.heroDad.ui.features.home.widget.KickListItem
 import com.journey.heroDad.ui.features.home.widget.StartKickCountCard
 import com.journey.heroDad.ui.features.home.widget.StatCard
+import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.HeroDadAppBar
 import org.koin.androidx.compose.koinViewModel
@@ -71,10 +71,10 @@ fun HomeScreen(
                         item {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                horizontalArrangement = Arrangement.spacedBy(Dimens.md),
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(horizontal = 16.dp)
+                                    .padding(horizontal = Dimens.lg)
                             ) {
                                 StatCard(
                                     title = "TODAY'S KICKS",
@@ -105,11 +105,12 @@ fun HomeScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp)
+                                .padding(horizontal = Dimens.lg)
                         ) {
                             Text(
                                 text = "Recent Sessions",
-                                style = MaterialTheme.typography.titleMedium
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
                                 text = "View All",

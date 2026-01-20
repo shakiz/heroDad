@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.journey.heroDad.R
+import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
 fun StartKickCountCard() {
@@ -29,13 +30,13 @@ fun StartKickCountCard() {
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(Dimens.lg),
         tonalElevation = 1.dp
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(Dimens.lg),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start
         ) {
@@ -56,7 +57,7 @@ fun StartKickCountCard() {
             Column(
                 horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.Center,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = Dimens.lg)
             ) {
                 Text(
                     text = "Start Session",
