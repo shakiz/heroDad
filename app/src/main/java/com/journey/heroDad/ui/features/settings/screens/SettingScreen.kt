@@ -2,6 +2,7 @@ package com.journey.heroDad.ui.features.settings.screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.journey.heroDad.R
+import com.journey.heroDad.navigation.AppNavGraph
 import com.journey.heroDad.ui.features.settings.viewmodel.SettingsVIewModel
 import com.journey.heroDad.ui.features.settings.widget.ProfileCard
 import com.journey.heroDad.ui.features.settings.widget.SettingsItemCard
@@ -65,8 +67,9 @@ fun SettingsScreen(
     }
 
     Scaffold { innerPadding ->
-        when (val result = uiState.settingsItems) {
-            is ResultWrapper.Loading -> {
+        when {
+            uiState.settingsItems is ResultWrapper.Loading ||
+                    uiState.isLoggedOut is ResultWrapper.Loading -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
@@ -75,7 +78,19 @@ fun SettingsScreen(
                 }
             }
 
-            is ResultWrapper.Success -> {
+            uiState.settingsItems is ResultWrapper.Success ||
+                    uiState.isLoggedOut is ResultWrapper.Success -> {
+                if (uiState.isLoggedOut.getOrNull() == true) {
+                    navController.navigate(
+                        route = AppNavGraph.AUTH_GRAPH.name
+                    ) {
+                        popUpTo(route = AppNavGraph.MAIN_GRAPH.name) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
+                }
+
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
@@ -112,7 +127,7 @@ fun SettingsScreen(
                                 .padding(vertical = Dimens.sm, horizontal = Dimens.lg)
 
                         ) {
-                            result.data.forEach { item ->
+                            uiState.settingsItems.getOrNull()?.forEach { item ->
                                 SettingsItemCard(settingsItem = item)
                             }
                         }
@@ -131,7 +146,11 @@ fun SettingsScreen(
                                 MaterialTheme.colorScheme.error.copy(alpha = .5f)
                             ),
                             tonalElevation = 0.dp,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    settingsVIewModel.logout()
+                                }
                         ) {
                             Row(
                                 modifier = Modifier.padding(Dimens.md),
@@ -158,13 +177,14 @@ fun SettingsScreen(
                 }
             }
 
-            is ResultWrapper.Failure -> {
+            uiState.settingsItems is ResultWrapper.Failure ||
+                    uiState.isLoggedOut is ResultWrapper.Failure -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Error: ${result.message}",
+                        text = "Error",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.error
                     )

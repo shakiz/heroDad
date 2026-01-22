@@ -13,15 +13,16 @@ class AuthPreferences(
         prefs[AuthPrefKeys.AUTH_TOKEN].orEmpty()
     }
 
-    suspend fun saveToken(token: String){
+    suspend fun saveToken(token: String) {
         context.authDataStore.edit { prefs ->
             prefs[AuthPrefKeys.AUTH_TOKEN] = token
         }
     }
 
-    suspend fun clearToken(){
-        context.authDataStore.edit { prefs ->
-            prefs.remove(AuthPrefKeys.AUTH_TOKEN)
+    suspend fun clearToken(): Result<Unit> =
+        runCatching {
+            context.authDataStore.edit { prefs ->
+                prefs.remove(AuthPrefKeys.AUTH_TOKEN)
+            }
         }
-    }
 }

@@ -24,27 +24,27 @@ fun BottomNavigationBar(navController: NavHostController) {
         NavigationItem(
             title = "Home",
             icon = R.drawable.ic_home,
-            route = NavRoute.HOME_PAGE.name
+            route = AppNavRoute.HOME_SCREEN.name
         ),
         NavigationItem(
             title = "Dashboard",
             icon = R.drawable.ic_dashboard,
-            route = NavRoute.DASHBOARD.name
+            route = AppNavRoute.DASHBOARD_SCREEN.name
         ),
         NavigationItem(
             title = "Timeline",
             icon = R.drawable.ic_timeline,
-            route = NavRoute.TIMELINE.name
+            route = AppNavRoute.TIMELINE_SCREEN.name
         ),
         NavigationItem(
             title = "Quiz",
             icon = R.drawable.ic_exam,
-            route = NavRoute.QUIZ.name
+            route = AppNavRoute.QUIZ_SCREEN.name
         ),
         NavigationItem(
             title = "Settings",
             icon = R.drawable.ic_settings,
-            route = NavRoute.SETTINGS.name
+            route = AppNavRoute.SETTINGS_SCREEN.name
         )
 
     )

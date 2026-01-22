@@ -18,8 +18,9 @@ class AuthRepositoryImpl(
         return true
     }
 
-    override suspend fun logout() {
-        authPreferences.clearToken()
+    override suspend fun logout(): Boolean {
+        val result = authPreferences.clearToken().isSuccess
+        return result
     }
 
     override suspend fun getTodos(): TodoData {

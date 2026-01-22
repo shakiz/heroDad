@@ -9,19 +9,18 @@ import com.journey.heroDad.navigation.graph.mainNavGraph
 import com.journey.heroDad.ui.features.login.AppDestinationResolver
 import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 
-enum class NavRoute {
-    LOGIN,
-    HOME_PAGE,
-    DASHBOARD,
-    TIMELINE,
-    QUIZ,
-    SETTINGS,
-    PROFILE
+enum class AppNavRoute {
+    LOGIN_SCREEN,
+    HOME_SCREEN,
+    DASHBOARD_SCREEN,
+    TIMELINE_SCREEN,
+    QUIZ_SCREEN,
+    SETTINGS_SCREEN,
 }
 
-enum class NavGraph{
-    MAIN,
-    AUTH
+enum class AppNavGraph{
+    MAIN_GRAPH,
+    AUTH_GRAPH
 }
 
 @Composable

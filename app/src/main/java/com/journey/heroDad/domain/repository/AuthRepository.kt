@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
     suspend fun login(): Boolean
-    suspend fun logout()
+    suspend fun logout(): Boolean
     suspend fun getTodos() : TodoData
 
     fun getAuthToken(): Flow<AuthState>

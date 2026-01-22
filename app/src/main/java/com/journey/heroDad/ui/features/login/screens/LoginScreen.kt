@@ -28,8 +28,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.navigation.NavGraph
-import com.journey.heroDad.navigation.NavRoute
+import com.journey.heroDad.navigation.AppNavGraph
 import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 import com.journey.heroDad.ui.features.login.viewmodel.AuthViewModel
 import com.journey.heroDad.ui.features.login.widget.SocialLoginButton
@@ -148,7 +147,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
 
                     is AuthState.LoggedIn -> {
                         navController.navigate(
-                            NavGraph.MAIN.name
+                            AppNavGraph.MAIN_GRAPH.name
                         ) {
                             popUpTo(navController.graph.startDestinationId) {
                                 inclusive = true

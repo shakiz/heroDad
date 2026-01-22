@@ -42,32 +42,32 @@ fun MainScaffold(navController: NavController) {
         }
     ) { innerPadding ->
         NavHost(
-            startDestination = NavRoute.HOME_PAGE.name,
+            startDestination = AppNavRoute.HOME_SCREEN.name,
             navController = mainNavController,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(
-                route = NavRoute.HOME_PAGE.name,
+                route = AppNavRoute.HOME_SCREEN.name,
             ) {
                 HomeScreen(navController = mainNavController)
             }
             composable(
-                route = NavRoute.DASHBOARD.name,
+                route = AppNavRoute.DASHBOARD_SCREEN.name,
             ) {
                 DashboardScreen()
             }
             composable(
-                route = NavRoute.TIMELINE.name,
+                route = AppNavRoute.TIMELINE_SCREEN.name,
             ) {
                 TimelineScreen()
             }
             composable(
-                route = NavRoute.QUIZ.name,
+                route = AppNavRoute.QUIZ_SCREEN.name,
             ) {
                 QuizScreen()
             }
             composable(
-                route = NavRoute.SETTINGS.name,
+                route = AppNavRoute.SETTINGS_SCREEN.name,
             ) {
                 SettingsScreen(navController = mainNavController)
             }
