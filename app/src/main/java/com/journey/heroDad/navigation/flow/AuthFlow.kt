@@ -8,7 +8,7 @@ import com.journey.heroDad.navigation.AppDestination
 import com.journey.heroDad.ui.features.login.screens.LoginScreen
 
 @Composable
-fun AuthFlow() {
+fun AuthFlow(onLogin: () -> Unit) {
     val backStack = rememberNavBackStack(AppDestination.Login)
 
     NavDisplay(
@@ -19,11 +19,11 @@ fun AuthFlow() {
         entryProvider = { key ->
             when (key) {
                 AppDestination.Login -> NavEntry(key) {
-                    LoginScreen()
+                    LoginScreen(onLogin = onLogin)
                 }
 
                 else -> NavEntry(key) {
-                    LoginScreen()
+                    LoginScreen(onLogin = onLogin)
                 }
             }
         }

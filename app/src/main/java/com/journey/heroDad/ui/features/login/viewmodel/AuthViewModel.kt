@@ -48,6 +48,7 @@ class AuthViewModel : ViewModel(), KoinComponent {
             )
             val isSuccess = authRepository.login()
             if (isSuccess) {
+                authRepository.getAuthToken()
                 _authUiState.value = ResultWrapper.Success(
                     AuthUiState(
                         authState = AuthState.LoggedIn,
@@ -62,7 +63,6 @@ class AuthViewModel : ViewModel(), KoinComponent {
     fun logout() {
         viewModelScope.launch {
             authRepository.logout()
-            authRepository.getAuthToken()
         }
     }
 }

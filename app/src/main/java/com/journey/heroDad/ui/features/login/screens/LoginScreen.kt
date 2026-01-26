@@ -33,7 +33,7 @@ import com.journey.heroDad.ui.features.login.widget.SocialLoginButton
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
+fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), onLogin:() -> Unit) {
     val authUiState by authViewModel.authUiState.collectAsState()
 
     Scaffold(
@@ -69,7 +69,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                     text = "Continue with Facebook",
                     icon = R.drawable.ic_facebook,
                     onClick = {
-                        authViewModel.login()
+                        onLogin()
                     }
                 )
 
@@ -77,7 +77,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                     text = "Continue with Google",
                     icon = R.drawable.ic_google,
                     onClick = {
-                        authViewModel.login()
+                        onLogin()
                     }
                 )
 
@@ -85,7 +85,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                     text = "Continue with Apple",
                     icon = R.drawable.ic_apple,
                     onClick = {
-                        authViewModel.login()
+                        onLogin()
                     }
                 )
 

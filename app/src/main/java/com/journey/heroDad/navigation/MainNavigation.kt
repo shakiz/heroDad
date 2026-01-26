@@ -1,5 +1,6 @@
 package com.journey.heroDad.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import com.journey.heroDad.navigation.flow.AuthFlow
@@ -15,15 +16,26 @@ fun MainNavigation(authState: AuthState) {
     val authViewModel: AuthViewModel = koinViewModel()
 
     KoinAndroidContext {
-        val appDestination = remember {
+        Log.i("AuthState:MainNavigation",authState.toString())
+        val appDestination = remember(authState) {
             AppDestinationResolver.resolveAppDestination(authState = authState)
         }
-        when(appDestination){
-            AppDestination.Login -> AuthFlow()
+        when (appDestination) {
+            AppDestination.Login -> AuthFlow(
+                onLogin = {
+                    authViewModel.login()
+                }
+            )
+
             AppDestination.Home -> MainFlow(onLogout = {
                 authViewModel.logout()
             })
-            else -> AuthFlow()
+
+            else -> AuthFlow(
+                onLogin = {
+                    authViewModel.login()
+                }
+            )
         }
     }
 }
