@@ -56,8 +56,6 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
-
-                // Title
                 Text(
                     text = "Let’s you in",
                     style = MaterialTheme.typography.headlineMedium.copy(
@@ -93,7 +91,6 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Divider
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
@@ -107,8 +104,6 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
-
-                // Primary button
                 Button(
                     onClick = {},
                     modifier = Modifier
@@ -144,14 +139,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
                     }
 
                     is AuthState.LoggedIn -> {
-//                        navController.navigate(
-//                            AppNavGraph.MAIN_GRAPH.name
-//                        ) {
-//                            popUpTo(navController.graph.startDestinationId) {
-//                                inclusive = true
-//                            }
-//                            launchSingleTop = true
-//                        }
+
                     }
 
                     else -> {}

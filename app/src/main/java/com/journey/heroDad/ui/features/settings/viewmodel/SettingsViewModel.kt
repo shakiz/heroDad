@@ -68,7 +68,8 @@ class SettingsVIewModel : ViewModel(), KoinComponent {
 
     fun logout() {
         viewModelScope.launch {
-            _isLoggedOut.value = ResultWrapper.Success(authRepository.logout())
+            authRepository.logout()
+            authRepository.getAuthToken()
         }
     }
 }

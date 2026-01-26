@@ -22,7 +22,7 @@ import com.journey.heroDad.ui.features.timeline.TimelineScreen
 import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
-fun MainFlow() {
+fun MainFlow(onLogout:() -> Unit) {
     val backStack = rememberNavBackStack(AppDestination.Home)
     val currentRoute = backStack.last() as AppDestination
 
@@ -59,7 +59,9 @@ fun MainFlow() {
                     AppDestination.Dashboard -> NavEntry(key) { DashboardScreen() }
                     AppDestination.Timeline -> NavEntry(key) { TimelineScreen() }
                     AppDestination.Quiz -> NavEntry(key) { QuizScreen() }
-                    AppDestination.Settings -> NavEntry(key) { SettingsScreen() }
+                    AppDestination.Settings -> NavEntry(key) { SettingsScreen(
+                        onLogout = onLogout
+                    ) }
                     else -> NavEntry(key) { HomeScreen() }
                 }
             }

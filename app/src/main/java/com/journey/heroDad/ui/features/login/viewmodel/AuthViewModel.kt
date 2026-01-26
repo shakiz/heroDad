@@ -58,4 +58,11 @@ class AuthViewModel : ViewModel(), KoinComponent {
             }
         }
     }
+
+    fun logout() {
+        viewModelScope.launch {
+            authRepository.logout()
+            authRepository.getAuthToken()
+        }
+    }
 }
