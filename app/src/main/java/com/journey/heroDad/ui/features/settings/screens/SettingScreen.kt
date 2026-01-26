@@ -36,15 +36,13 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.navigation.AppNavGraph
 import com.journey.heroDad.ui.features.settings.viewmodel.SettingsVIewModel
 import com.journey.heroDad.ui.features.settings.widget.ProfileCard
 import com.journey.heroDad.ui.features.settings.widget.SettingsItemCard
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
-import org.koin.androidx.compose.navigation.koinNavViewModel
+import org.koin.androidx.compose.koinViewModel
 
 enum class SettingsEnum {
     REMINDER,
@@ -56,8 +54,7 @@ enum class SettingsEnum {
 
 @Composable
 fun SettingsScreen(
-    navController: NavController,
-    settingsVIewModel: SettingsVIewModel = koinNavViewModel()
+    settingsVIewModel: SettingsVIewModel = koinViewModel()
 ) {
     val uiState by settingsVIewModel.uiState.collectAsState()
 
@@ -81,14 +78,14 @@ fun SettingsScreen(
             uiState.settingsItems is ResultWrapper.Success ||
                     uiState.isLoggedOut is ResultWrapper.Success -> {
                 if (uiState.isLoggedOut.getOrNull() == true) {
-                    navController.navigate(
-                        route = AppNavGraph.AUTH_GRAPH.name
-                    ) {
-                        popUpTo(route = AppNavGraph.MAIN_GRAPH.name) {
-                            inclusive = true
-                        }
-                        launchSingleTop = true
-                    }
+//                    navController.navigate(
+//                        route = AppNavGraph.AUTH_GRAPH.name
+//                    ) {
+//                        popUpTo(route = AppNavGraph.MAIN_GRAPH.name) {
+//                            inclusive = true
+//                        }
+//                        launchSingleTop = true
+//                    }
                 }
 
                 LazyColumn(

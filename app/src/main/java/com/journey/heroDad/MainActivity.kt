@@ -25,16 +25,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            KoinAndroidContext {
+            //KoinAndroidContext {
                 HeroDadAppTheme {
-                    val authViewModel: AuthViewModel = koinViewModel()
-                    val authState by authViewModel.authState.collectAsState()
-
-                    // Optional splash/loading
-                    if (authState is AuthState.Loading) return@HeroDadAppTheme
-                    MainNavigation(authState = authState)
+//                    val authViewModel: AuthViewModel = koinViewModel()
+//                    val authState by authViewModel.authState.collectAsState()
+//
+//                    // Optional splash/loading
+//                    if (authState is AuthState.Loading) return@HeroDadAppTheme
+                    MainNavigation(authState = AuthState.LoggedIn)
                 }
-            }
+            //}
         }
     }
 }

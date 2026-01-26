@@ -26,16 +26,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.navigation.AppNavGraph
 import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 import com.journey.heroDad.ui.features.login.viewmodel.AuthViewModel
 import com.journey.heroDad.ui.features.login.widget.SocialLoginButton
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: NavController) {
+fun LoginScreen(authViewModel: AuthViewModel = koinViewModel()) {
     val authUiState by authViewModel.authUiState.collectAsState()
 
     Scaffold(
@@ -146,14 +144,14 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                     }
 
                     is AuthState.LoggedIn -> {
-                        navController.navigate(
-                            AppNavGraph.MAIN_GRAPH.name
-                        ) {
-                            popUpTo(navController.graph.startDestinationId) {
-                                inclusive = true
-                            }
-                            launchSingleTop = true
-                        }
+//                        navController.navigate(
+//                            AppNavGraph.MAIN_GRAPH.name
+//                        ) {
+//                            popUpTo(navController.graph.startDestinationId) {
+//                                inclusive = true
+//                            }
+//                            launchSingleTop = true
+//                        }
                     }
 
                     else -> {}

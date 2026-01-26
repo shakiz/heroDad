@@ -27,10 +27,10 @@ import com.journey.heroDad.ui.features.home.viewmodel.DashboardViewModel
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
 import com.journey.heroDad.utils.components.widget.AppLineChartWidget
-import org.koin.androidx.compose.navigation.koinNavViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinNavViewModel()) {
+fun DashboardScreen(dashboardViewModel: DashboardViewModel = koinViewModel()) {
     val uiState by dashboardViewModel.uiState.collectAsState()
 
     LaunchedEffect(Lifecycle.State.CREATED) {
