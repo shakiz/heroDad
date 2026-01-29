@@ -1,14 +1,16 @@
 package com.journey.heroDad.ui.features.login
 
-import com.journey.heroDad.navigation.AppNavGraph
+import android.util.Log
+import com.journey.heroDad.navigation.AppDestination
 import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 
 object AppDestinationResolver {
-    fun resolveAppDestination(authState: AuthState): String {
+    fun resolveAppDestination(authState: AuthState): AppDestination {
+        Log.i("AuthState",authState.toString())
         return when(authState) {
-            is AuthState.LoggedIn -> AppNavGraph.MAIN_GRAPH.name
-            is AuthState.LoggedOut -> AppNavGraph.AUTH_GRAPH.name
-            else -> AppNavGraph.AUTH_GRAPH.name
+            is AuthState.LoggedIn -> AppDestination.Home
+            is AuthState.LoggedOut -> AppDestination.Login
+            else -> AppDestination.Login
         }
     }
 }

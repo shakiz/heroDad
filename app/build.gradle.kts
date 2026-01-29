@@ -2,17 +2,18 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "2.0.0"
     id("kotlin-parcelize")
 }
 
 android {
     namespace = "com.journey.heroDad"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.journey.herodad"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -101,6 +102,13 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
+    // Kotlin Serialization (Essential for Nav3 Routes)
+    implementation(libs.kotlinx.serialization.json)
+
+    // Navigation 3 (The New Stack Management)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
+
     //Koin- dependency injection
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)
@@ -108,7 +116,8 @@ dependencies {
 
     //Koin- Jetpack Compose
     implementation(libs.koin.androidx.compose)
-    implementation(libs.koin.androidx.compose.navigation)
+    implementation(libs.koin.compose.navigation3)
+    implementation(libs.koin.androidx.compose)
 
     implementation(libs.com.squareup.retrofit2.retrofit)
     implementation(libs.com.squareup.retrofit2.converter.gson)

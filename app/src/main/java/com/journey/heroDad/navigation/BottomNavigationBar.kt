@@ -14,37 +14,39 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.journey.heroDad.R
 import com.journey.heroDad.ui.theme.Dimens
 
 @Composable
-fun BottomNavigationBar(navController: NavHostController) {
+fun BottomNavigationBar(
+    currentDestination: AppDestination,
+    onTabSelected: (AppDestination) -> Unit
+) {
     val navigationItems = listOf(
         NavigationItem(
             title = "Home",
             icon = R.drawable.ic_home,
-            route = AppNavRoute.HOME_SCREEN.name
+            route = AppDestination.Home
         ),
         NavigationItem(
             title = "Dashboard",
             icon = R.drawable.ic_dashboard,
-            route = AppNavRoute.DASHBOARD_SCREEN.name
+            route = AppDestination.Dashboard
         ),
         NavigationItem(
             title = "Timeline",
             icon = R.drawable.ic_timeline,
-            route = AppNavRoute.TIMELINE_SCREEN.name
+            route = AppDestination.Timeline
         ),
         NavigationItem(
             title = "Quiz",
             icon = R.drawable.ic_exam,
-            route = AppNavRoute.QUIZ_SCREEN.name
+            route = AppDestination.Quiz
         ),
         NavigationItem(
             title = "Settings",
             icon = R.drawable.ic_settings,
-            route = AppNavRoute.SETTINGS_SCREEN.name
+            route = AppDestination.Settings
         )
 
     )
@@ -57,13 +59,12 @@ fun BottomNavigationBar(navController: NavHostController) {
         windowInsets = WindowInsets(8, 0, 0, 8),
     ) {
         navigationItems.forEachIndexed { index, item ->
+            val isSelected = currentDestination == item.route
             NavigationBarItem(
-                selected = selectedIndex.intValue == index,
+                selected = isSelected,
                 onClick = {
                     selectedIndex.intValue = index
-                    navController.navigate(item.route) {
-                        launchSingleTop = true
-                    }
+                    onTabSelected(item.route)
                 },
                 icon = {
                     Icon(

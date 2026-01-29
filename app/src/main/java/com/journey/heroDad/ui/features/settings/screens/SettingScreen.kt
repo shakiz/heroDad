@@ -1,8 +1,10 @@
 package com.journey.heroDad.ui.features.settings.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,15 +39,13 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.navigation.AppNavGraph
 import com.journey.heroDad.ui.features.settings.viewmodel.SettingsVIewModel
 import com.journey.heroDad.ui.features.settings.widget.ProfileCard
 import com.journey.heroDad.ui.features.settings.widget.SettingsItemCard
 import com.journey.heroDad.ui.theme.Dimens
 import com.journey.heroDad.utils.components.network.ResultWrapper
-import org.koin.androidx.compose.navigation.koinNavViewModel
+import org.koin.androidx.compose.koinViewModel
 
 enum class SettingsEnum {
     REMINDER,
@@ -56,14 +57,15 @@ enum class SettingsEnum {
 
 @Composable
 fun SettingsScreen(
-    navController: NavController,
-    settingsVIewModel: SettingsVIewModel = koinNavViewModel()
+    settingsViewModel: SettingsVIewModel = koinViewModel(),
+    onLogout: () -> Unit
 ) {
-    val uiState by settingsVIewModel.uiState.collectAsState()
-
+    val uiState by settingsViewModel.uiState.collectAsState()
 
     LaunchedEffect(Lifecycle.State.CREATED) {
-        settingsVIewModel.getSettingItem()
+        if (uiState.settingsItems is ResultWrapper.Loading) {
+            settingsViewModel.getSettingItem()
+        }
     }
 
     Scaffold { innerPadding ->
@@ -80,16 +82,6 @@ fun SettingsScreen(
 
             uiState.settingsItems is ResultWrapper.Success ||
                     uiState.isLoggedOut is ResultWrapper.Success -> {
-                if (uiState.isLoggedOut.getOrNull() == true) {
-                    navController.navigate(
-                        route = AppNavGraph.AUTH_GRAPH.name
-                    ) {
-                        popUpTo(route = AppNavGraph.MAIN_GRAPH.name) {
-                            inclusive = true
-                        }
-                        launchSingleTop = true
-                    }
-                }
 
                 LazyColumn(
                     modifier = Modifier
@@ -148,8 +140,11 @@ fun SettingsScreen(
                             tonalElevation = 0.dp,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable {
-                                    settingsVIewModel.logout()
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = LocalIndication.current
+                                ) {
+                                    onLogout()
                                 }
                         ) {
                             Row(

@@ -26,16 +26,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.journey.heroDad.R
-import com.journey.heroDad.navigation.AppNavGraph
 import com.journey.heroDad.ui.features.login.viewmodel.AuthState
 import com.journey.heroDad.ui.features.login.viewmodel.AuthViewModel
 import com.journey.heroDad.ui.features.login.widget.SocialLoginButton
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: NavController) {
+fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), onLogin:() -> Unit) {
     val authUiState by authViewModel.authUiState.collectAsState()
 
     Scaffold(
@@ -58,8 +56,6 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
-
-                // Title
                 Text(
                     text = "Let’s you in",
                     style = MaterialTheme.typography.headlineMedium.copy(
@@ -73,7 +69,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                     text = "Continue with Facebook",
                     icon = R.drawable.ic_facebook,
                     onClick = {
-                        authViewModel.login()
+                        onLogin()
                     }
                 )
 
@@ -81,7 +77,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                     text = "Continue with Google",
                     icon = R.drawable.ic_google,
                     onClick = {
-                        authViewModel.login()
+                        onLogin()
                     }
                 )
 
@@ -89,13 +85,12 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                     text = "Continue with Apple",
                     icon = R.drawable.ic_apple,
                     onClick = {
-                        authViewModel.login()
+                        onLogin()
                     }
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Divider
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
@@ -109,8 +104,6 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
-
-                // Primary button
                 Button(
                     onClick = {},
                     modifier = Modifier
@@ -146,14 +139,7 @@ fun LoginScreen(authViewModel: AuthViewModel = koinViewModel(), navController: N
                     }
 
                     is AuthState.LoggedIn -> {
-                        navController.navigate(
-                            AppNavGraph.MAIN_GRAPH.name
-                        ) {
-                            popUpTo(navController.graph.startDestinationId) {
-                                inclusive = true
-                            }
-                            launchSingleTop = true
-                        }
+
                     }
 
                     else -> {}
